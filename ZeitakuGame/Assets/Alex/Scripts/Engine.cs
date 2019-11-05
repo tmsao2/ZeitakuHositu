@@ -188,11 +188,13 @@ public class Engine : MonoBehaviour
                 _stickLeft.moveDegree -= Mathf.Abs(degree);
             }
 
-            if(_stickLeft.moveDegree % 90 == 0)
+            if(_stickLeft.moveDegree % 90 == 1)
             {
                 _boatRB.AddForceAtPosition(_leftEngine.forward * _leftForce, _leftEngine.position);
                 _boatRB.AddRelativeForce(Vector3.forward * _rightForce);
             }
+
+            Debug.Log(_stickLeft.moveDegree);
 
             //if (_stickLeft.moveDegree >= 300f)
             //{

@@ -922,8 +922,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leftEngine: {fileID: 962794314}
   _rightEngine: {fileID: 2005068124}
-  _leftForce: 50
-  _rightForce: 50
+  _leftForce: 10
+  _rightForce: 10
   _maxVelocity: {x: 0, y: 0, z: 10}
   _controllerTiledDistance: 0.5
 --- !u!114 &1306835382
