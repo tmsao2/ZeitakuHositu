@@ -20,7 +20,7 @@ public class PlayManager : MonoBehaviour
 
         if (gameTime > 100)
         {
-            GameManager.SceneChange("ResultScene");
+            //GameManager.SceneChange("ResultScene");
         }
 
         if (Input.GetKeyDown(KeyCode.T))
