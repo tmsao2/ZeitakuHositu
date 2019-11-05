@@ -43,7 +43,6 @@ public class Engine : MonoBehaviour
             isSet = false;
             originAngle = 0;
             angle = 0;
-            moveDegree = 0;
             x = 0;
             y = 0;
             distance = 0;
@@ -58,6 +57,9 @@ public class Engine : MonoBehaviour
     {
         _stickLeft.Init();
         _stickRight.Init();
+
+        _stickLeft.moveDegree = 0;
+        _stickRight.moveDegree = 0;
 
         _boatRB = transform.GetComponent<Rigidbody>();
         _boatController = transform.GetComponent<BoatController>();
@@ -94,6 +96,8 @@ public class Engine : MonoBehaviour
         }
 
         ForceLimit();
+
+        //_boatRB.angularVelocity += 
     }
 
     private void ForceLimit()
@@ -136,12 +140,6 @@ public class Engine : MonoBehaviour
                 _stickRight.moveDegree -= Mathf.Abs(degree);
             }
 
-            if (_stickRight.moveDegree % 90 == 0)
-            {
-                _boatRB.AddForceAtPosition(_rightEngine.forward * _rightForce, _rightEngine.position);
-                _boatRB.AddRelativeForce(Vector3.forward * _rightForce);
-            }
-
             //if (_stickRight.moveDegree >= 300f)
             //{
             //    _boatRB.AddForceAtPosition(_rightEngine.forward * _rightForce * _boatRB.mass, _rightEngine.position);
@@ -155,6 +153,15 @@ public class Engine : MonoBehaviour
             //    _stickRight.moveDegree = 0;
             //}
         }
+
+        transform.localEulerAngles += new Vector3(0, -Mathf.Abs(_stickRight.moveDegree / 1000), 0);
+        _boatRB.AddRelativeForce(Vector3.forward * _stickRight.moveDegree / 100f);
+        _stickRight.moveDegree -= 100f * Time.deltaTime;
+        if (_stickRight.moveDegree <= 0)
+        {
+            _stickRight.moveDegree = 0;
+        }
+        //_boatRB.AddForceAtPosition(Vector3.forward * Mathf.Abs(_stickRight.moveDegree / 1000f), _rightEngine.position);
     }
 
     private void LeftStickControl()
@@ -188,11 +195,13 @@ public class Engine : MonoBehaviour
                 _stickLeft.moveDegree -= Mathf.Abs(degree);
             }
 
-            if(_stickLeft.moveDegree % 90 == 0)
-            {
-                _boatRB.AddForceAtPosition(_leftEngine.forward * _leftForce, _leftEngine.position);
-                _boatRB.AddRelativeForce(Vector3.forward * _rightForce);
-            }
+            //if(_stickLeft.moveDegree % 90 == 1)
+            //{
+                
+            //    _boatRB.AddRelativeForce(Vector3.forward * _rightForce);
+            //}
+
+            Debug.Log(_stickLeft.moveDegree);
 
             //if (_stickLeft.moveDegree >= 300f)
             //{
@@ -205,5 +214,14 @@ public class Engine : MonoBehaviour
             //    _stickLeft.moveDegree = 0;
             //}
         }
+        //_boatRB.AddForceAtPosition(_leftEngine.forward * _stickLeft.moveDegree / 1000f, _leftEngine.position);
+        transform.localEulerAngles += new Vector3(0, Mathf.Abs(_stickLeft.moveDegree / 1000), 0);
+        _boatRB.AddRelativeForce(Vector3.forward * _stickLeft.moveDegree / 100f);
+        _stickLeft.moveDegree -= 100f * Time.deltaTime;
+        if (_stickLeft.moveDegree <= 0)
+        {
+            _stickLeft.moveDegree = 0;
+        }
+
     }
 }
