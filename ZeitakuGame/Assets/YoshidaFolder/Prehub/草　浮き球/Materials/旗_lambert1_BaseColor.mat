@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: wave
-  m_Shader: {fileID: 4800000, guid: 31236e36a23704c4dba934a7a49f4760, type: 3}
+  m_Name: "\u65D7_lambert1_BaseColor"
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 02a06f836959165438aeb278ee5492d8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -55,30 +55,13 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _WaveTex1:
-        m_Texture: {fileID: 2800000, guid: 06634190d8c747a469ee5e6188bc0255, type: 3}
-        m_Scale: {x: 500, y: 500}
-        m_Offset: {x: 0, y: 0}
-    - _WaveTex1H:
-        m_Texture: {fileID: 2800000, guid: 6b8c7f7f3419b944b82a1cd0bdc4d83e, type: 3}
-        m_Scale: {x: 500, y: 500}
-        m_Offset: {x: 0, y: 0}
-    - _WaveTex2:
-        m_Texture: {fileID: 2800000, guid: b880bdd02bf9a224eaade07394df233a, type: 3}
-        m_Scale: {x: 100, y: 100}
-        m_Offset: {x: 0, y: 0}
-    - _WaveTex2H:
-        m_Texture: {fileID: 2800000, guid: 7df314fd87e725b42914146199d9d2e0, type: 3}
-        m_Scale: {x: 100, y: 100}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EdgeLength: 3
     - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -90,9 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.16862746, g: 0.60784316, b: 0.8392157, a: 1}
-    - _Displace: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlowSpeed: {r: 5, g: 1, b: 0, a: 0}
-    - _Refraction: {r: 0, g: 0, b: 0, a: 0}
-    - _WaveTiling: {r: 8, g: 4, b: 0, a: 0}

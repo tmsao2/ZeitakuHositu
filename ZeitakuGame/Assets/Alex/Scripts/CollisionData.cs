@@ -42,5 +42,14 @@ public class CollisionData : MonoBehaviour
 
             Debug.Log("Log Hit !");
         }
+        else if(other.tag== "FloatPall")
+        {
+            Rigidbody otherRB = other.transform.GetComponent<Rigidbody>();
+            if (otherRB == null)
+            {
+                Debug.LogError("Rigidbody is missing");
+            }
+            otherRB.velocity += _boatRB.velocity;
+        }
     }
 }

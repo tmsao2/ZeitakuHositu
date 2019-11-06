@@ -20,13 +20,21 @@ public class ArrangementObstacle : MonoBehaviour
 
     //ステージの端になるポール
     [SerializeField]
-    GameObject poll;
+    GameObject poll;   
+    [SerializeField]
+    GameObject smallPoll;
 
     //poll生成のインターバル
     int possInstantiateCount = 0;
 
     //障害物生成のインターバル
     int obstacleInstantiateCount = 0;
+
+    [SerializeField]
+    int stageWide = 0;
+
+    [SerializeField]
+    GameObject stagesParent;
 
     //生成する障害物のセットとそれぞれの生成確率
     [System.Serializable]
@@ -43,9 +51,13 @@ public class ArrangementObstacle : MonoBehaviour
 
     float obstaclesRandSum = 0;
 
+    [SerializeField]
+    int obstacleCountMax=125;
+
     // Start is called before the first frame update
     void Start()
     {
+ 
         positionFlags = GameObject.Find("StageFlagg").GetComponent<PositionFlags>();
         flags = new List<Transform>();
         flags = positionFlags.GetList();
@@ -88,15 +100,22 @@ public class ArrangementObstacle : MonoBehaviour
 
     void SidePollInstantiate()
     {
+            GameObject obj = null;
         //ポールの生成
-        if (possInstantiateCount > 3)
+        if (possInstantiateCount > 15)
         {
-            Instantiate(poll, new Vector3(transform.position.x + 2, transform.position.y, transform.position.z), new Quaternion());
-            Instantiate(poll, new Vector3(transform.position.x - 2, transform.position.y, transform.position.z), new Quaternion());
+           obj= Instantiate(poll, new Vector3(transform.position.x + stageWide, transform.position.y, transform.position.z), new Quaternion());
+            obj.transform.parent = stagesParent.transform;
+            obj = Instantiate(poll, new Vector3(transform.position.x - stageWide, transform.position.y, transform.position.z), new Quaternion());
+            obj.transform.parent = stagesParent.transform;
             possInstantiateCount = 0;
         }
         else
         {
+            obj = Instantiate(smallPoll, new Vector3(transform.position.x + stageWide, transform.position.y, transform.position.z), new Quaternion());
+            obj.transform.parent = stagesParent.transform;
+            obj = Instantiate(smallPoll, new Vector3(transform.position.x - stageWide, transform.position.y, transform.position.z), new Quaternion());
+            obj.transform.parent = stagesParent.transform;
             possInstantiateCount++;
         }
     }
@@ -116,7 +135,7 @@ public class ArrangementObstacle : MonoBehaviour
 
     void ObstacleInstantiate()
     {
-        if (obstacleInstantiateCount > 25)
+        if (obstacleInstantiateCount > obstacleCountMax)
         {
             Vector3 pos = transform.position;
             //Quaternion qua = transform.rotation - movement.rotation;
@@ -129,6 +148,7 @@ public class ArrangementObstacle : MonoBehaviour
             Quaternion qua=new Quaternion();
             qua=Quaternion.Euler(new Vector3(0,rad+90,0));
             a = Instantiate(a, transform.position, qua);
+            a.transform.parent = stagesParent.transform;
             obstacleInstantiateCount = 0;
         }
         else

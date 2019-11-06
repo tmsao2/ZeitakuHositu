@@ -148,7 +148,7 @@ public class Engine : MonoBehaviour
         _stickRight.thrust = Mathf.Clamp(_stickRight.thrust, 0, 360 * 4f);
 
         float bindThrust = (_stickLeft.thrust + _stickRight.thrust) / 360f * 4f;
-        transform.Translate(new Vector3(0, 0, bindThrust * 0.05f * Time.deltaTime));
+        transform.Translate(new Vector3(0, 0, bindThrust * 0.2f * Time.deltaTime));
         //_boatRB.velocity += new Vector3(0, 0, bindThrust * Time.deltaTime);
 
         transform.localEulerAngles -= new Vector3(0, _stickRight.moveDegree / (1440f / 2f), 0);
@@ -156,7 +156,7 @@ public class Engine : MonoBehaviour
 
         ForceLimit();
 
-        Debug.Log(_boatRB.velocity);
+        //Debug.Log(_boatRB.velocity);
     }
 
     private void ForceLimit()
