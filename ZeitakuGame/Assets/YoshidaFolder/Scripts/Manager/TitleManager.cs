@@ -20,7 +20,7 @@ public class TitleManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.T))
         {
-            GameManager.SceneChange("TitleScene");
+            GameManager.SceneChange("GameScene");
         }
     }
 }

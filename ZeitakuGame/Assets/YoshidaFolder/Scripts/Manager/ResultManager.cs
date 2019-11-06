@@ -19,7 +19,7 @@ public class ResultManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            GameManager.SceneChange("TitleScene");
+            GameManager.SceneChange("GameScene");
         }
 
 
