@@ -31,7 +31,6 @@
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard
 		#pragma vertex:vert
-		#pragma fragment:frag
 		#pragma tessellate:tessEdge
 
         #pragma target 5.0
@@ -62,6 +61,12 @@
 			float2 texcoord2 : TEXCOORD2;
 		};
 
+		struct Input
+		{
+			float2 uv_WaveTex1;
+			float4 screenPos;
+		};
+
 		float4 tessEdge(appdata v0, appdata v1, appdata v2) {
 			return UnityEdgeLengthBasedTessCull(v0.vertex, v1.vertex, v2.vertex, _EdgeLength, 1.5f);
 		}
@@ -73,12 +78,6 @@
 
 			v.vertex.xyz += v.normal * displace;
 		}
-
-        struct Input
-        {
-            float2 uv_WaveTex1;
-			float4 screenPos;
-        };
 
 
 		void surf(Input IN, inout SurfaceOutputStandard o)
@@ -97,6 +96,8 @@
 			float2 grabUV = (IN.screenPos.xy / IN.screenPos.w) * float2(1, -1) + float2(0, 1);
 			grabUV.y = grabUV.y * -1 + 1;
 			float3 grab = tex2D(_GrabTexture, grabUV + distortion).rgb * _Color;
+
+
             o.Emission = grab;
 			o.Smoothness = _Glossiness;
 			o.Albedo = fixed3(0,0,0);
