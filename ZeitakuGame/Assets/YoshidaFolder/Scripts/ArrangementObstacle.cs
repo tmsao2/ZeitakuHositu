@@ -24,6 +24,9 @@ public class ArrangementObstacle : MonoBehaviour
     [SerializeField]
     GameObject smallPoll;
 
+    [SerializeField]
+    GameObject skeltonWall;
+
     //poll生成のインターバル
     int possInstantiateCount = 0;
 
@@ -118,6 +121,11 @@ public class ArrangementObstacle : MonoBehaviour
             obj.transform.parent = stagesParent.transform;
             possInstantiateCount++;
         }
+        GameObject wall;
+        wall = Instantiate(skeltonWall, new Vector3(transform.position.x + stageWide+4, transform.position.y, transform.position.z), new Quaternion());
+        wall.transform.parent = stagesParent.transform;
+        wall = Instantiate(skeltonWall, new Vector3(transform.position.x - stageWide-4, transform.position.y, transform.position.z), new Quaternion());
+        wall.transform.parent = stagesParent.transform;
     }
 
     //ベジェ曲線の計算
