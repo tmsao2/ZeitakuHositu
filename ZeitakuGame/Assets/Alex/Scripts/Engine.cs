@@ -146,14 +146,16 @@ public class Engine : MonoBehaviour
         transform.localEulerAngles += new Vector3(0, _stickLeft.moveDegree / (360f * 4f), 0);
 
         ForceLimit();
+
+        Debug.Log(_boatRB.velocity);
     }
 
     private void ForceLimit()
     {
         // 累計してきた力を制限制御
         _boatRB.velocity = new Vector3(
-            _boatRB.velocity.x,
-            _boatRB.velocity.y,
+            Mathf.Clamp(_boatRB.velocity.x, -_maxVelocity.x, _maxVelocity.x),
+            Mathf.Clamp(_boatRB.velocity.y, -_maxVelocity.y, _maxVelocity.y),
             Mathf.Clamp(_boatRB.velocity.z, -_maxVelocity.z, _maxVelocity.z));
     }
 }

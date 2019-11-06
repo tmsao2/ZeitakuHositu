@@ -36,7 +36,7 @@ public class ArrangementObstacle : MonoBehaviour
         public GameObject obstacleArray;
         public float perf;
     }
-    public GameObject ob;
+    //public GameObject ob;
 
     [SerializeField]
     Obstacles[] obstacles=null;
@@ -89,10 +89,10 @@ public class ArrangementObstacle : MonoBehaviour
     void SidePollInstantiate()
     {
         //ポールの生成
-        if (possInstantiateCount > 4)
+        if (possInstantiateCount > 3)
         {
-            Instantiate(poll, new Vector3(transform.position.x + 10, transform.position.y, transform.position.z), new Quaternion());
-            Instantiate(poll, new Vector3(transform.position.x - 10, transform.position.y, transform.position.z), new Quaternion());
+            Instantiate(poll, new Vector3(transform.position.x + 2, transform.position.y, transform.position.z), new Quaternion());
+            Instantiate(poll, new Vector3(transform.position.x - 2, transform.position.y, transform.position.z), new Quaternion());
             possInstantiateCount = 0;
         }
         else
@@ -116,7 +116,7 @@ public class ArrangementObstacle : MonoBehaviour
 
     void ObstacleInstantiate()
     {
-        if (obstacleInstantiateCount > 50)
+        if (obstacleInstantiateCount > 25)
         {
             Vector3 pos = transform.position;
             //Quaternion qua = transform.rotation - movement.rotation;

@@ -8,6 +8,9 @@ public class GoalTrigger : MonoBehaviour
     [SerializeField]
     GameObject playerShip;
 
+    [SerializeField]
+    GameObject finishUI;
+
     int time=0;
     bool end=false;
 
@@ -23,7 +26,7 @@ public class GoalTrigger : MonoBehaviour
     {
         if(end == false)
         { return; }
-        if (time>100)
+        if (time>300)
         {
             GameManager.SceneChange("ResultScene");
         }
@@ -40,6 +43,7 @@ public class GoalTrigger : MonoBehaviour
         {
             Debug.Log("end");
             end = true;
+            finishUI.SetActive(true);
         }
     }
 }
