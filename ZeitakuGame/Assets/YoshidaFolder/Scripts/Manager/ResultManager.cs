@@ -18,7 +18,7 @@ public class ResultManager : MonoBehaviour
     }
     public void Title()
     {
-        GameManager.SceneChange("SelectScene");
+        GameManager.SceneChange("SelectScene2");
     }
 
     public void Retry()
