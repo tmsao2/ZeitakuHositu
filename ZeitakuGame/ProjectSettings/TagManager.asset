@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - SubSpeedObject
+  - Grass
   layers:
   - Default
   - TransparentFX

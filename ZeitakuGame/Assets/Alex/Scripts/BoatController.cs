@@ -18,6 +18,11 @@ public class BoatController : MonoBehaviour
     void Start()
     {
         _boatRB = transform.GetComponent<Rigidbody>();
+
+        if(_boatRB == null)
+        {
+            Debug.LogError("Rigidbody is missing");
+        }
     }
 
     private void FixedUpdate()
