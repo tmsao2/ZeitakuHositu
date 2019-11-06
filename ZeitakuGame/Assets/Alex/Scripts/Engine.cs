@@ -109,7 +109,10 @@ public class Engine : MonoBehaviour
                 {
                     _stickLeft.moveDegree += Mathf.Abs(degree);
                 }
-                _stickLeft.thrust += Mathf.Abs(degree);
+                else
+                {
+                    _stickLeft.thrust += Mathf.Abs(degree);
+                }
             }
         }
 
@@ -125,15 +128,18 @@ public class Engine : MonoBehaviour
                 {
                     _stickRight.moveDegree += Mathf.Abs(degree);
                 }
-                _stickRight.thrust += Mathf.Abs(degree);
+                else
+                {
+                    _stickRight.thrust += Mathf.Abs(degree);
+                }
             }
         }
 
-        _stickLeft.moveDegree -= 250 * Time.deltaTime;
-        _stickRight.moveDegree -= 250 * Time.deltaTime;
+        _stickLeft.moveDegree -= 250f * Time.deltaTime;
+        _stickRight.moveDegree -= 250f * Time.deltaTime;
 
-        _stickLeft.thrust -= 250 * Time.deltaTime;
-        _stickRight.thrust -= 250 * Time.deltaTime;
+        _stickLeft.thrust -= 20f * Time.deltaTime;
+        _stickRight.thrust -= 20f * Time.deltaTime;
 
         _stickLeft.moveDegree = Mathf.Clamp(_stickLeft.moveDegree, 0, 360f * 4f);
         _stickRight.moveDegree = Mathf.Clamp(_stickRight.moveDegree, 0, 360f * 4f);
@@ -141,11 +147,16 @@ public class Engine : MonoBehaviour
         _stickLeft.thrust = Mathf.Clamp(_stickLeft.thrust, 0, 360 * 4f);
         _stickRight.thrust = Mathf.Clamp(_stickRight.thrust, 0, 360 * 4f);
 
-        _boatRB.AddRelativeForce(Vector3.forward * (_stickRight.thrust + _stickLeft.thrust) / 180);
-        transform.localEulerAngles -= new Vector3(0, _stickRight.moveDegree / (360f * 4f), 0);
-        transform.localEulerAngles += new Vector3(0, _stickLeft.moveDegree / (360f * 4f), 0);
+        float bindThrust = (_stickLeft.thrust + _stickRight.thrust) / 360f * 4f;
+        transform.Translate(new Vector3(0, 0, bindThrust * 0.05f * Time.deltaTime));
+        //_boatRB.velocity += new Vector3(0, 0, bindThrust * Time.deltaTime);
+
+        transform.localEulerAngles -= new Vector3(0, _stickRight.moveDegree / (1440f / 2f), 0);
+        transform.localEulerAngles += new Vector3(0, _stickLeft.moveDegree / (1440f / 2f), 0);
 
         ForceLimit();
+
+        Debug.Log(_boatRB.velocity);
     }
 
     private void ForceLimit()

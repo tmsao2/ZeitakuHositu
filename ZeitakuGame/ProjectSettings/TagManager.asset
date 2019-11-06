@@ -6,6 +6,9 @@ TagManager:
   tags:
   - SubSpeedObject
   - Grass
+  - Barrel
+  - Log
+  - Shark
   layers:
   - Default
   - TransparentFX
