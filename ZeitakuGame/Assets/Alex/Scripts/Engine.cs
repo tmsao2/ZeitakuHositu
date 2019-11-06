@@ -2,10 +2,8 @@
 
 public class Engine : MonoBehaviour
 {
-    [Header("Force Setting")]
     [SerializeField]
     private Vector3 _maxVelocity = new Vector3(0, 0, 20f);
-
     private Rigidbody _boatRB;
     private BoatController _boatController;
 
