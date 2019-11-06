@@ -1,0 +1,45 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GoalTrigger : MonoBehaviour
+{
+
+    [SerializeField]
+    GameObject playerShip;
+
+    int time=0;
+    bool end=false;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        time = 0;
+        end = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(end == false)
+        { return; }
+        if (time>100)
+        {
+            GameManager.SceneChange("ResultScene");
+        }
+        else
+        {
+            time++;
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(playerShip.tag==other.tag)
+        {
+            Debug.Log("end");
+            end = true;
+        }
+    }
+}

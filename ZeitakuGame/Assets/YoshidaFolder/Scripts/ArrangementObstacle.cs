@@ -89,7 +89,7 @@ public class ArrangementObstacle : MonoBehaviour
     void SidePollInstantiate()
     {
         //ポールの生成
-        if (possInstantiateCount > 8)
+        if (possInstantiateCount > 4)
         {
             Instantiate(poll, new Vector3(transform.position.x + 10, transform.position.y, transform.position.z), new Quaternion());
             Instantiate(poll, new Vector3(transform.position.x - 10, transform.position.y, transform.position.z), new Quaternion());

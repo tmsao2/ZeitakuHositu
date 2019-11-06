@@ -2,16 +2,7 @@
 
 public class Engine : MonoBehaviour
 {
-    [SerializeField]
-    private Transform _leftEngine;
-    [SerializeField]
-    private Transform _rightEngine;
-
     [Header("Force Setting")]
-    [SerializeField]
-    private float _leftForce = 500f;
-    [SerializeField]
-    private float _rightForce = 500f;
     [SerializeField]
     private Vector3 _maxVelocity = new Vector3(0, 0, 20f);
 
@@ -21,7 +12,7 @@ public class Engine : MonoBehaviour
     [Header("Controller")]
     [SerializeField]
     [Range(0, 1f)]
-    private float _controllerTiledDistance = 1f;
+    private float _controllerTiledDistance = 0.5f;
 
     private struct Stick
     {
@@ -37,6 +28,7 @@ public class Engine : MonoBehaviour
         public float x;
         public float y;
         public float distance;
+        public float thrust;
 
         public void Init()
         {
@@ -61,6 +53,9 @@ public class Engine : MonoBehaviour
         _stickLeft.moveDegree = 0;
         _stickRight.moveDegree = 0;
 
+        _stickLeft.thrust = 0;
+        _stickRight.thrust = 0;
+
         _boatRB = transform.GetComponent<Rigidbody>();
         _boatController = transform.GetComponent<BoatController>();
     }
@@ -76,41 +71,6 @@ public class Engine : MonoBehaviour
         _stickLeft.distance = Mathf.Sqrt(_stickLeft.x * _stickLeft.x + _stickLeft.y * _stickLeft.y);
         _stickRight.distance = Mathf.Sqrt(_stickRight.x * _stickRight.x + _stickRight.y * _stickRight.y);
 
-        LeftStickControl();
-        RightStickControl();
-       
-        if (_leftEngine == null || _rightEngine == null)
-        {
-            Debug.LogError("Left or Right Engine Ref is missing");
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            _boatRB.AddForceAtPosition(_leftEngine.forward * _leftForce * _boatRB.mass, _leftEngine.position);
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            _boatRB.AddForceAtPosition(_rightEngine.forward * _rightForce * _boatRB.mass, _rightEngine.position);
-        }
-
-        ForceLimit();
-
-        //_boatRB.angularVelocity += 
-    }
-
-    private void ForceLimit()
-    {
-        // 累計してきた力を制限制御
-        _boatRB.velocity = new Vector3(
-            _boatRB.velocity.x,
-            _boatRB.velocity.y,
-            Mathf.Clamp(_boatRB.velocity.z, -_maxVelocity.z, _maxVelocity.z));
-    }
-
-    private void RightStickControl()
-    {
         if (_stickRight.x != 0 || _stickRight.y != 0)
         {
             if (_stickRight.distance >= _controllerTiledDistance && !_stickRight.isSet)
@@ -125,47 +85,6 @@ public class Engine : MonoBehaviour
             }
         }
 
-        if (_stickRight.isSet)
-        {
-            float oldAngle = _stickRight.angle;
-            _stickRight.angle = Mathf.Atan2(_stickRight.y, _stickRight.x) * Mathf.Rad2Deg;
-            float degree = Mathf.Abs(_stickRight.angle) - Mathf.Abs(oldAngle);
-
-            if (_stickRight.angle > oldAngle)
-            {
-                _stickRight.moveDegree += Mathf.Abs(degree);
-            }
-            else if (_stickRight.angle < oldAngle)
-            {
-                _stickRight.moveDegree -= Mathf.Abs(degree);
-            }
-
-            //if (_stickRight.moveDegree >= 300f)
-            //{
-            //    _boatRB.AddForceAtPosition(_rightEngine.forward * _rightForce * _boatRB.mass, _rightEngine.position);
-            //    _boatRB.AddRelativeForce(Vector3.forward * _rightForce / 2f);
-            //    _stickRight.moveDegree = 0;
-            //}
-            //else if (_stickRight.moveDegree <= -300f)
-            //{
-            //    _boatRB.AddForceAtPosition(_rightEngine.forward * _rightForce * _boatRB.mass, _rightEngine.position);
-            //    _boatRB.AddRelativeForce(Vector3.forward * _rightForce / 2f);
-            //    _stickRight.moveDegree = 0;
-            //}
-        }
-
-        transform.localEulerAngles += new Vector3(0, -Mathf.Abs(_stickRight.moveDegree / 1000), 0);
-        _boatRB.AddRelativeForce(Vector3.forward * _stickRight.moveDegree / 100f);
-        _stickRight.moveDegree -= 100f * Time.deltaTime;
-        if (_stickRight.moveDegree <= 0)
-        {
-            _stickRight.moveDegree = 0;
-        }
-        //_boatRB.AddForceAtPosition(Vector3.forward * Mathf.Abs(_stickRight.moveDegree / 1000f), _rightEngine.position);
-    }
-
-    private void LeftStickControl()
-    {
         if (_stickLeft.x != 0 || _stickLeft.y != 0)
         {
             if (_stickLeft.distance >= _controllerTiledDistance && !_stickLeft.isSet)
@@ -180,7 +99,7 @@ public class Engine : MonoBehaviour
             }
         }
 
-        if (_stickLeft.isSet)
+        if(_stickLeft.isSet)
         {
             float oldAngle = _stickLeft.angle;
             _stickLeft.angle = Mathf.Atan2(_stickLeft.y, _stickLeft.x) * Mathf.Rad2Deg;
@@ -188,40 +107,55 @@ public class Engine : MonoBehaviour
 
             if (_stickLeft.angle > oldAngle)
             {
-                _stickLeft.moveDegree += Mathf.Abs(degree);
+                if(_stickRight.angle == 0)
+                {
+                    _stickLeft.moveDegree += Mathf.Abs(degree);
+                }
+                _stickLeft.thrust += Mathf.Abs(degree);
             }
-            else if (_stickLeft.angle < oldAngle)
-            {
-                _stickLeft.moveDegree -= Mathf.Abs(degree);
-            }
-
-            //if(_stickLeft.moveDegree % 90 == 1)
-            //{
-                
-            //    _boatRB.AddRelativeForce(Vector3.forward * _rightForce);
-            //}
-
-            Debug.Log(_stickLeft.moveDegree);
-
-            //if (_stickLeft.moveDegree >= 300f)
-            //{
-            //    _boatRB.AddForceAtPosition(_leftEngine.forward * _leftForce * _boatRB.mass, _leftEngine.position);
-            //    _stickLeft.moveDegree = 0;
-            //}
-            //else if (_stickLeft.moveDegree <= -300f)
-            //{
-            //    _boatRB.AddForceAtPosition(_leftEngine.forward * _leftForce * _boatRB.mass, _leftEngine.position);
-            //    _stickLeft.moveDegree = 0;
-            //}
         }
-        //_boatRB.AddForceAtPosition(_leftEngine.forward * _stickLeft.moveDegree / 1000f, _leftEngine.position);
-        transform.localEulerAngles += new Vector3(0, Mathf.Abs(_stickLeft.moveDegree / 1000), 0);
-        _boatRB.AddRelativeForce(Vector3.forward * _stickLeft.moveDegree / 100f);
-        _stickLeft.moveDegree -= 100f * Time.deltaTime;
-        if (_stickLeft.moveDegree <= 0)
+
+        if(_stickRight.isSet)
         {
-            _stickLeft.moveDegree = 0;
+            float oldAngle = _stickRight.angle;
+            _stickRight.angle = Mathf.Atan2(_stickRight.y, _stickRight.x) * Mathf.Rad2Deg;
+            float degree = Mathf.Abs(_stickRight.angle) - Mathf.Abs(oldAngle);
+
+           if(_stickRight.angle > oldAngle)
+            {
+                if(_stickLeft.angle == 0)
+                {
+                    _stickRight.moveDegree += Mathf.Abs(degree);
+                }
+                _stickRight.thrust += Mathf.Abs(degree);
+            }
         }
 
+        _stickLeft.moveDegree -= 250 * Time.deltaTime;
+        _stickRight.moveDegree -= 250 * Time.deltaTime;
+
+        _stickLeft.thrust -= 250 * Time.deltaTime;
+        _stickRight.thrust -= 250 * Time.deltaTime;
+
+        _stickLeft.moveDegree = Mathf.Clamp(_stickLeft.moveDegree, 0, 360f * 4f);
+        _stickRight.moveDegree = Mathf.Clamp(_stickRight.moveDegree, 0, 360f * 4f);
+
+        _stickLeft.thrust = Mathf.Clamp(_stickLeft.thrust, 0, 360 * 4f);
+        _stickRight.thrust = Mathf.Clamp(_stickRight.thrust, 0, 360 * 4f);
+
+        _boatRB.AddRelativeForce(Vector3.forward * (_stickRight.thrust + _stickLeft.thrust) / 180);
+        transform.localEulerAngles -= new Vector3(0, _stickRight.moveDegree / (360f * 4f), 0);
+        transform.localEulerAngles += new Vector3(0, _stickLeft.moveDegree / (360f * 4f), 0);
+
+        ForceLimit();
+    }
+
+    private void ForceLimit()
+    {
+        // 累計してきた力を制限制御
+        _boatRB.velocity = new Vector3(
+            _boatRB.velocity.x,
+            _boatRB.velocity.y,
+            Mathf.Clamp(_boatRB.velocity.z, -_maxVelocity.z, _maxVelocity.z));
     }
 }
