@@ -4,23 +4,46 @@ using UnityEngine;
 
 public class SelectManager : MonoBehaviour
 {
+    int waitTime = 0;
+    bool timerStart;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        waitTime = 0;
+        timerStart = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Submit") > 0)
-        {
-            GameManager.SceneChange("GameScene");
-        }
         if (Input.GetKeyDown(KeyCode.T))
         {
             GameManager.SceneChange("GameScene");
         }
+        if(!timerStart)
+        {
+            return;
+        }
+
+        waitTime++;
+
+        if(waitTime<100)
+        {
+            waitTime++;
+        }
+        else
+        { 
+            GameManager.SceneChange("GameScene");
+        }
+        //if (Input.GetAxis("Submit") > 0)
+        //{
+        //    GameManager.SceneChange("GameScene");
+        //}
+    }
+
+   public void BegginerStage()
+    {
+        timerStart = true;
     }
 }
