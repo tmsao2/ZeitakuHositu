@@ -17,18 +17,13 @@ public class SelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            GameManager.SceneChange("GameScene");
-        }
         if(!timerStart)
         {
             return;
         }
 
-        waitTime++;
 
-        if(waitTime<100)
+        if(++waitTime<100)
         {
             waitTime++;
         }

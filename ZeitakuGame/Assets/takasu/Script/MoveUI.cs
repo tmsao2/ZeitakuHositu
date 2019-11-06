@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResultManager : MonoBehaviour
+public class MoveUI : MonoBehaviour
 {
+    [SerializeField]
+    GameObject title;
+    [SerializeField]
+    GameObject select;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,15 +19,5 @@ public class ResultManager : MonoBehaviour
     void Update()
     {
         
-
-    }
-    public void Title()
-    {
-        GameManager.SceneChange("SelectScene");
-    }
-
-    public void Retry()
-    {
-        GameManager.SceneChange("GameScene");
     }
 }
