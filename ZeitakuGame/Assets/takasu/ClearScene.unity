@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 482321321}
-  m_IndirectSpecularColor: {r: 0.6553293, g: 0.68050486, b: 0.7171961, a: 1}
+  m_IndirectSpecularColor: {r: 0.65518916, g: 0.68049467, b: 0.71728206, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -211,6 +211,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 59.210003, y: -19.550001, z: 27.372002}
+--- !u!1 &489651960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489651962}
+  - component: {fileID: 489651961}
+  m_Layer: 0
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &489651961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489651960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fe72bf05a0a9a42bc8d70b6d25e870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume:
+    bgm: 1
+    se: 1
+    mute: 0
+  seClips: []
+  bgmClips: []
+--- !u!4 &489651962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489651960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 984, y: 144, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &500066340
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,12 +645,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656c5ac1f009a1d499ddd9dc4668a0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUi: {fileID: 500066341}
-  rankB: {fileID: 21300000, guid: b35ef887c145afe41a9d2db0eb3738b4, type: 3}
-  rankA: {fileID: 21300000, guid: db2c1163b38f8df47b060bd408104bff, type: 3}
-  rankS: {fileID: 21300000, guid: 9e6cac077bfe56b45a6706d3bfe98c56, type: 3}
-  rankSS: {fileID: 21300000, guid: 1b98fcd211a4b994eaa04b7a2816d789, type: 3}
-  rankImage: {fileID: 1339389822}
+  timeUi: {fileID: 0}
+  rankB: {fileID: 0}
+  rankA: {fileID: 0}
+  rankS: {fileID: 0}
+  rankSS: {fileID: 0}
+  rankImage: {fileID: 0}
 --- !u!1 &1030311736
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +735,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: boat
       objectReference: {fileID: 0}
+    - target: {fileID: -7114577863419070732, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bb1dcdb573ad8a5408d9694ef821278e, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 621c35d880f17e64b9eae4c4608a382e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -756,22 +820,7 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: bb1dcdb573ad8a5408d9694ef821278e, type: 2}
-    - target: {fileID: -6057140222963153312, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5984388485589536855, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7114577863419070732, guid: 621c35d880f17e64b9eae4c4608a382e,
         type: 3}
       propertyPath: m_IsActive
       value: 0
