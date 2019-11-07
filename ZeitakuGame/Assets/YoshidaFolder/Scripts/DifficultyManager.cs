@@ -43,7 +43,7 @@ public class DifficultyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        SetDifficulty(StageMemoy.stage);
     }
 
     // Update is called once per frame

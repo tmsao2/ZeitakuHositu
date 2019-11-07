@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5167595659757725701}
   - component: {fileID: 2736182259527326347}
   - component: {fileID: 6015219394726602177}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: skeltonWall
   m_TagString: Log
   m_Icon: {fileID: 0}
@@ -90,5 +90,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 5, z: 0.8}
+  m_Size: {x: 2, y: 5, z: 2}
   m_Center: {x: 0, y: 2, z: 0}

@@ -15,9 +15,23 @@ public class CountDown : MonoBehaviour
     private Image[] _images = new Image[4];
 
     private Image _currentImage;
+    [SerializeField]
+    Engine boatObject;
+    [SerializeField]
+    TimeCounter timeCounter;
 
     private void Start()
     {
+        //if(boatObject==null)
+        //{
+        //    boatObject = GameObject.Find("boat");
+        //}
+        //if(timeCounter==null)
+        //{
+        //    timeCounter = GameObject.Find("");
+        //}
+        boatObject = GetComponent<Engine>();
+        timeCounter = GetComponent<TimeCounter>();
         _currentImage = null;
         _countDown = 4;
         StartCoroutine("MinusTime");
@@ -46,6 +60,8 @@ public class CountDown : MonoBehaviour
                 _startFlag = true;
                 _time.text = ("START !!!");
                 Debug.Log("START !!!");
+                boatObject.start = true;
+                timeCounter.start = true;
             }
         }
         else

@@ -9,6 +9,7 @@ public class PlayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Fade.FadeIn();
         gameTime = 0;
         selectedStage = 0;
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 482321321}
-  m_IndirectSpecularColor: {r: 0.65556866, g: 0.6807617, b: 0.7173265, a: 1}
+  m_IndirectSpecularColor: {r: 0.65564775, g: 0.6807472, b: 0.7173805, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -294,6 +294,49 @@ Transform:
   m_Father: {fileID: 1006051121}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &851298923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 851298925}
+  - component: {fileID: 851298924}
+  m_Layer: 0
+  m_Name: ClearManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &851298924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851298923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8c81b13b250544ebe1eb158fce91c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &851298925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851298923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 677.1318, y: 362.7126, z: -688.38165}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &942635635
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,8 +419,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1006051122}
-        m_MethodName: Retry
+      - m_Target: {fileID: 851298924}
+        m_MethodName: FadeOutGoRetry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -663,6 +706,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: boat
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bb1dcdb573ad8a5408d9694ef821278e, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 621c35d880f17e64b9eae4c4608a382e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -732,16 +785,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: bb1dcdb573ad8a5408d9694ef821278e, type: 2}
-    - target: {fileID: -6057140222963153312, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5984388485589536855, guid: 621c35d880f17e64b9eae4c4608a382e,
         type: 3}
@@ -1007,8 +1050,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1006051122}
-        m_MethodName: Title
+      - m_Target: {fileID: 851298924}
+        m_MethodName: FadeOutGoTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

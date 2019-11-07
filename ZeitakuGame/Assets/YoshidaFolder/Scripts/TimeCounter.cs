@@ -9,16 +9,23 @@ public class TimeCounter : MonoBehaviour
     [SerializeField]
     Text text;
 
+    public bool start;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        start = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         text.text = "" + timeRimit;
+        if(start==false)
+        {
+            return;
+        }
+
 
         if (timeRimit <= 0)
         {

@@ -70,9 +70,12 @@ public class Engine : MonoBehaviour
 
     private float _frontTurn;
 
+    public bool start;
+
     // Start is called before the first frame update
     void Start()
     {
+        start = true;
         _stickLeft.Init();
         _stickRight.Init();
 
@@ -99,6 +102,11 @@ public class Engine : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(start==false)
+        {
+            return;
+        }
+
         _stickLeft.x = Input.GetAxis("Horizontal");
         _stickLeft.y = Input.GetAxis("Vertical");
 
