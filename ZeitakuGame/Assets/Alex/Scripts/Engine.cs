@@ -83,6 +83,8 @@ public class Engine : MonoBehaviour
     private bool _newFlag;
     private bool _vibrateFlag;
 
+    public bool isHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,6 +114,7 @@ public class Engine : MonoBehaviour
         _vibrateFlag = false;
         _oldFlag = false;
         _newFlag = false;
+        isHit = false;
 
         if (fakeL == null || fakeR == null)
         {
@@ -250,7 +253,7 @@ public class Engine : MonoBehaviour
             }
             else
             {
-                _turnSpeed -= 0.2f;
+                _turnSpeed -= 0.1f;
                 _turnSpeed = Mathf.Clamp(_turnSpeed, 0, 15f);
             }
         }
@@ -309,9 +312,9 @@ public class Engine : MonoBehaviour
             }   
         }
 
-        if(_vibrateFlag)
+        if(_vibrateFlag && !isHit)
         {
-            GamePad.SetVibration(player, vibL, vibR);
+            GamePad.SetVibration(player, 0, vibL + vibR);
         }
 
         Debug.Log(_vibrateFlag);

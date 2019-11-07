@@ -6,12 +6,13 @@ using XInputDotNetPure;
 public class CollisionData : MonoBehaviour
 {
     private GamePad _gamePad;
-
     private Rigidbody _boatRB;
+    public Engine _player;  
 
     private void Start()
     {
         _boatRB = transform.GetComponent<Rigidbody>();
+        _player = transform.GetComponent<Engine>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,6 +65,7 @@ public class CollisionData : MonoBehaviour
 
     private void Vibrate(float left,float right)
     {
+        _player.isHit = true;
         PlayerIndex player = PlayerIndex.One;
         GamePad.SetVibration(player, left, right);
         Invoke("Reset", 0.3f);
@@ -73,5 +75,6 @@ public class CollisionData : MonoBehaviour
     {
         PlayerIndex player = PlayerIndex.One;
         GamePad.SetVibration(player, 0, 0);
+        _player.isHit = false;
     }
 }
