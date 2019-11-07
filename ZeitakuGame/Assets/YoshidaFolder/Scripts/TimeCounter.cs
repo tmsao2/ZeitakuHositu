@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TimeCounter : MonoBehaviour
 {
-    public float timeRimit = 0;
+    public static float timeRimit = 0;
     [SerializeField]
     Text text;
 
