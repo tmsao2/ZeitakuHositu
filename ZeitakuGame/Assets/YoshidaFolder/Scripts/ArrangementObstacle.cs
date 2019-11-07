@@ -59,6 +59,9 @@ public class ArrangementObstacle : MonoBehaviour
     [SerializeField]
     int obstacleCountMax=125;
 
+    [SerializeField]
+    GameObject skelWall;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +73,7 @@ public class ArrangementObstacle : MonoBehaviour
             case (DifficultyManager.difficulty.normal): diffName = "NormalFlag"; break;
             case (DifficultyManager.difficulty.hard): diffName = "DifficultFlag"; break;
         }
-
+        skelWall.SetActive(true);
         stagesParent = GameObject.Find("Stages");
         positionFlags = GameObject.Find(diffName).GetComponent<PositionFlags>();
         flags = new List<Transform>();

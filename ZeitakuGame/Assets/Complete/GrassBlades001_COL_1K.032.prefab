@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6239170131563081585}
   - component: {fileID: 5009553348625411123}
   - component: {fileID: 7863951318657848381}
-  - component: {fileID: 5074738364092671341}
   m_Layer: 0
   m_Name: GrassBlades001_COL_1K.032
   m_TagString: Grass
@@ -79,17 +78,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &5074738364092671341
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8697749156499062244}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.0025343
-  m_Height: 5.99171
-  m_Direction: 1
-  m_Center: {x: -0.11597542, y: 0.23356634, z: 0.08283579}

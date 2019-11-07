@@ -59,7 +59,7 @@ public class CollisionData : MonoBehaviour
             {
                 Debug.LogError("Rigidbody is missing");
             }
-            otherRB.velocity += _boatRB.velocity;
+            //otherRB.velocity += _boatRB.velocity;
         }
     }
 

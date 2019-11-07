@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 7036774790014749819}
   - component: {fileID: 7036774790014749818}
   - component: {fileID: 7036774790014749701}
-  - component: {fileID: 6400775171290159657}
+  - component: {fileID: 778671657551134205}
   m_Layer: 0
   m_Name: hasu
   m_TagString: Grass
@@ -159,7 +159,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &6400775171290159657
+--- !u!136 &778671657551134205
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +167,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7036774790014749700}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.20366655
   m_Height: 0.009955107
