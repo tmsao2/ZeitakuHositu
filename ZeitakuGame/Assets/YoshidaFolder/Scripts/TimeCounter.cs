@@ -30,7 +30,6 @@ public class TimeCounter : MonoBehaviour
     {
         gameEnd = false;
         cleartime = 0;
-        timeRimitMax = 0;
         start = false;
         eventSystemTrueCount = 100;
     }

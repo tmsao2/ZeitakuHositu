@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.65520227, g: 0.6805215, b: 0.71721286, a: 1}
+  m_IndirectSpecularColor: {r: 0.65521353, g: 0.6804491, b: 0.7171979, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -676,31 +676,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: bb1dcdb573ad8a5408d9694ef821278e, type: 2}
-    - target: {fileID: -5410762940040001521, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.045387566
-      objectReference: {fileID: 0}
-    - target: {fileID: -5410762940040001521, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 621c35d880f17e64b9eae4c4608a382e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -770,6 +745,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5410762940040001521, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.045387566
+      objectReference: {fileID: 0}
+    - target: {fileID: -5410762940040001521, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621c35d880f17e64b9eae4c4608a382e, type: 3}
@@ -1537,7 +1537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -61}
   m_SizeDelta: {x: 2000, y: 300}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1528846641
@@ -1560,7 +1560,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3399ee533d620df4899cc9e64a351a81, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18af033c2c319164a9aff8dc52ad1ff2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
