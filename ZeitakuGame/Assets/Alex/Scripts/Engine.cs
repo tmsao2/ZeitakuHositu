@@ -40,6 +40,8 @@ public class Engine : MonoBehaviour
     [SerializeField]
     private ParticleSystem _spalshFR;
 
+    public bool start;
+
     private struct Stick
     {
         // Bool For Init
@@ -85,6 +87,7 @@ public class Engine : MonoBehaviour
     void Start()
     {
         player = PlayerIndex.One;
+        start = false;
 
         _stickLeft.Init();
         _stickRight.Init();
@@ -118,6 +121,11 @@ public class Engine : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!start)
+        {
+            return;
+        }
+
         state = GamePad.GetState(player);
         _oldFlag = _newFlag;
         _newFlag = (state.Buttons.Start == ButtonState.Pressed);
@@ -266,28 +274,28 @@ public class Engine : MonoBehaviour
         //_frontTurn = Mathf.Clamp(_frontTurn, 0f, 15f);
 
         _boat.transform.localEulerAngles = new Vector3(
-            -_turnSpeed,
+            _turnSpeed,
             _boat.transform.localEulerAngles.y,
             _boat.transform.localEulerAngles.z);
 
         // Particle emission
         var l = _splashL.emission;
         var r = _splashR.emission;
-        l.rateOverTime = 100f * (_stickLeft.movement / 1440f);
-        r.rateOverTime = 100f * (_stickRight.movement / 1440f);
+        l.rateOverTime = 70f * (_stickLeft.movement / 1440f);
+        r.rateOverTime = 70f * (_stickRight.movement / 1440f);
 
         var lf = _splashFL.emission;
         var rf = _spalshFR.emission;
-        lf.rateOverTime = 100f * (_stickLeft.movement + _stickRight.movement) / 2880f;
-        rf.rateOverTime = 100f * (_stickLeft.movement + _stickRight.movement) / 2880f;
+        lf.rateOverTime = 70f * (_stickLeft.movement + _stickRight.movement) / 2880f;
+        rf.rateOverTime = 70f * (_stickLeft.movement + _stickRight.movement) / 2880f;
 
         ForceLimit();
 
         // Propeller Rotation
         float rotationL = (_stickLeft.moveDegree + _stickLeft.thrust) / 45f;
         float rotationR = (_stickRight.moveDegree + _stickRight.thrust) / 45f;
-        fakeL.transform.eulerAngles += new Vector3(0, 0, rotationL);
-        fakeR.transform.eulerAngles -= new Vector3(0, 0, rotationR);
+        fakeL.transform.eulerAngles -= new Vector3(0, 0, rotationL);
+        fakeR.transform.eulerAngles += new Vector3(0, 0, rotationR);
 
         float vibL = (_stickLeft.moveDegree + _stickLeft.thrust) / 28800f;
         float vibR = (_stickRight.moveDegree + _stickRight.thrust) / 28800f;
