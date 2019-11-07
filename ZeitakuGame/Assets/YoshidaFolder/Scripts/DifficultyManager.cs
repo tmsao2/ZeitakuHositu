@@ -35,6 +35,7 @@ public class DifficultyManager : MonoBehaviour
             case (difficulty.hard): stageCreater = difficultStage; timeRimit = 60; break;
         }
         timeCounter.SetLimit(timeRimit);
+        TimeCounter.timeRimitMax = timeRimit;
         //stageCreater=Instantiate(stageCreater, new Vector3(0, 0, 0), new Quaternion());
         stageCreater.SetActive(true);
     }

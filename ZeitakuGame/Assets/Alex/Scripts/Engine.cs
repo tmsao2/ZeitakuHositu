@@ -81,6 +81,8 @@ public class Engine : MonoBehaviour
     private bool _newFlag;
     private bool _vibrateFlag;
 
+    public bool start;
+
     // Start is called before the first frame update
     void Start()
     {

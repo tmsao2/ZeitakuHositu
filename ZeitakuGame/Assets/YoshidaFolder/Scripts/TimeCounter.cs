@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TimeCounter : MonoBehaviour
 {
     public static float timeRimit = 0;
+    public static float timeRimitMax = 0;
     [SerializeField]
     Text text;
 
@@ -29,6 +30,7 @@ public class TimeCounter : MonoBehaviour
     {
         gameEnd = false;
         cleartime = 0;
+        timeRimitMax = 0;
         start = false;
         eventSystemTrueCount = 100;
     }
