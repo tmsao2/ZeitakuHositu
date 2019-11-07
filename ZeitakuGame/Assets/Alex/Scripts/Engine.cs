@@ -131,7 +131,7 @@ public class Engine : MonoBehaviour
 
         state = GamePad.GetState(player);
         _oldFlag = _newFlag;
-        _newFlag = (state.Buttons.Start == ButtonState.Pressed);
+        _newFlag = (state.Buttons.Y == ButtonState.Pressed);
 
         _stickLeft.x = Input.GetAxis("Horizontal");
         _stickLeft.y = Input.GetAxis("Vertical");

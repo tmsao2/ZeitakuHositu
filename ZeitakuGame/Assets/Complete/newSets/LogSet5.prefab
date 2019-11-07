@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2503403647578499862}
   m_Layer: 0
-  m_Name: LogSet5 1
+  m_Name: LogSet5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,11 +39,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2503403647578499862}
     m_Modifications:
-    - target: {fileID: 3189242841688441471, guid: 4261cbf498e50234f823728861c4bafc,
-        type: 3}
-      propertyPath: m_Name
-      value: maruta (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 1338463362359646510, guid: 4261cbf498e50234f823728861c4bafc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -114,6 +109,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3189242841688441471, guid: 4261cbf498e50234f823728861c4bafc,
+        type: 3}
+      propertyPath: m_Name
+      value: maruta (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4261cbf498e50234f823728861c4bafc, type: 3}
 --- !u!4 &1792358360634999783 stripped
@@ -129,11 +129,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2503403647578499862}
     m_Modifications:
-    - target: {fileID: 3189242841688441471, guid: 4261cbf498e50234f823728861c4bafc,
-        type: 3}
-      propertyPath: m_Name
-      value: 'maruta '
-      objectReference: {fileID: 0}
     - target: {fileID: 1338463362359646510, guid: 4261cbf498e50234f823728861c4bafc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -142,7 +137,7 @@ PrefabInstance:
     - target: {fileID: 1338463362359646510, guid: 4261cbf498e50234f823728861c4bafc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3590002
+      value: -0.8590002
       objectReference: {fileID: 0}
     - target: {fileID: 1338463362359646510, guid: 4261cbf498e50234f823728861c4bafc,
         type: 3}
@@ -203,6 +198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189242841688441471, guid: 4261cbf498e50234f823728861c4bafc,
+        type: 3}
+      propertyPath: m_Name
+      value: 'maruta '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4261cbf498e50234f823728861c4bafc, type: 3}
