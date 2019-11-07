@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class ResultManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        Fade.FadeIn();
+    }
+    public void Title()
+    {
+        Fade.FadeOut("SelectScene2");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Retry()
     {
-        if (Input.GetAxis("Submit") > 0)
-        {
-            GameManager.SceneChange("TitleScene");
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            GameManager.SceneChange("GameScene");
-        }
-
-
+        Fade.FadeOut("GameScene");
     }
 }

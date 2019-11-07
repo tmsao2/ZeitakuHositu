@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/YoshidaFolder/Scenes/GameScene.unity
     guid: 5b1cdabf3ec288c4d86cbb47be9f556c
   - enabled: 1
-    path: Assets/YoshidaFolder/Scenes/ResultScene.unity
-    guid: fb80e66b8b4f9f644be32a9e2acecea9
-  - enabled: 1
-    path: Assets/YoshidaFolder/Scenes/TitleScene.unity
-    guid: f44424d20c260cf46bf8cda6c7b47233
-  - enabled: 1
     path: Assets/YoshidaFolder/Scenes/SelectScene.unity
     guid: a4cd4a67450d3e442a48e12e181a7ed0
+  - enabled: 1
+    path: Assets/takasu/ClearScene.unity
+    guid: 85aea5c7f3ed1024c8d6bdabf64eab1b
+  - enabled: 1
+    path: Assets/takasu/SelectScene2.unity
+    guid: be17b418b089aa44c893729387361ecc
   m_configObjects: {}

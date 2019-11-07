@@ -10,6 +10,7 @@ public class SelectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Fade.FadeIn();
         waitTime = 0;
         timerStart = false;
     }
@@ -17,24 +18,19 @@ public class SelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            GameManager.SceneChange("GameScene");
-        }
         if(!timerStart)
         {
             return;
         }
 
-        waitTime++;
 
-        if(waitTime<100)
+        if(++waitTime<100)
         {
             waitTime++;
         }
         else
         { 
-            GameManager.SceneChange("GameScene");
+            Fade.FadeOut("GameScene");
         }
         //if (Input.GetAxis("Submit") > 0)
         //{
