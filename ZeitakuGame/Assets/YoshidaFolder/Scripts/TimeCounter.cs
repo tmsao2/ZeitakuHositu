@@ -20,9 +20,15 @@ public class TimeCounter : MonoBehaviour
 
     int eventSystemTrueCount;
 
+    static float cleartime;
+
+    bool gameEnd;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameEnd = false;
+        cleartime = 0;
         start = false;
         eventSystemTrueCount = 100;
     }
@@ -32,6 +38,10 @@ public class TimeCounter : MonoBehaviour
     {
         text.text = "" + timeRimit;
         if(start==false)
+        {
+            return;
+        }
+        if(gameEnd==true)
         {
             return;
         }
@@ -63,5 +73,11 @@ public class TimeCounter : MonoBehaviour
     public void SetLimit(float limit)
     {
         timeRimit = limit;
+    }
+
+    void StopCount()
+    {
+        cleartime = timeRimit;
+        gameEnd = true;
     }
 }
