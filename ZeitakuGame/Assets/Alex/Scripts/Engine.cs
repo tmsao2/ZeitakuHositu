@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using XInputDotNetPure;
 
 public class Engine : MonoBehaviour
 {
@@ -69,13 +72,20 @@ public class Engine : MonoBehaviour
     private Stick _stickRight;
 
     private float _frontTurn;
+    private float _turnSpeed;
+    private int _reached;
 
-    public bool start;
+    PlayerIndex player;
+    GamePadState state;
+    private bool _oldFlag;
+    private bool _newFlag;
+    private bool _vibrateFlag;
 
     // Start is called before the first frame update
     void Start()
     {
-        start = false;
+        player = PlayerIndex.One;
+
         _stickLeft.Init();
         _stickRight.Init();
 
@@ -94,7 +104,13 @@ public class Engine : MonoBehaviour
         _changeSpeed = false;
         //_offsetSpeed = 0.01f;
 
-        if(fakeL == null || fakeR == null)
+        _turnSpeed = 0;
+        _reached = 0;
+        _vibrateFlag = false;
+        _oldFlag = false;
+        _newFlag = false;
+
+        if (fakeL == null || fakeR == null)
         {
             Debug.Log("Fake is missing");
         }
@@ -102,10 +118,9 @@ public class Engine : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(start==false)
-        {
-            return;
-        }
+        state = GamePad.GetState(player);
+        _oldFlag = _newFlag;
+        _newFlag = (state.Buttons.Start == ButtonState.Pressed);
 
         _stickLeft.x = Input.GetAxis("Horizontal");
         _stickLeft.y = Input.GetAxis("Vertical");
@@ -150,7 +165,7 @@ public class Engine : MonoBehaviour
             _stickLeft.angle = Mathf.Atan2(_stickLeft.y, _stickLeft.x) * Mathf.Rad2Deg;
             float degree = Mathf.Abs(_stickLeft.angle) - Mathf.Abs(oldAngle);
 
-            if (_stickLeft.angle < oldAngle)
+            if (_stickLeft.angle > oldAngle)
             {
                 if(_stickRight.distance < _controllerTiledDistance)
                 {
@@ -170,7 +185,7 @@ public class Engine : MonoBehaviour
             _stickRight.angle = Mathf.Atan2(_stickRight.y, _stickRight.x) * Mathf.Rad2Deg;
             float degree = Mathf.Abs(_stickRight.angle) - Mathf.Abs(oldAngle);
 
-           if(_stickRight.angle < oldAngle)
+           if(_stickRight.angle > oldAngle)
             {
                 if (_stickLeft.distance < _controllerTiledDistance)
                 {
@@ -204,7 +219,7 @@ public class Engine : MonoBehaviour
         _stickRight.movement = Mathf.Clamp(_stickRight.movement, 0.0f, 360 * 4f);
 
         float bindThrust = (_stickLeft.thrust + _stickRight.thrust) / 360f * 4f;
-        transform.Translate(new Vector3(0, 0, bindThrust * (0.1f + _offsetSpeed) * Time.deltaTime));
+        transform.Translate(new Vector3(0, 0, bindThrust * (0.2f + _offsetSpeed) * Time.deltaTime));
 
         transform.localEulerAngles -= new Vector3(0, _stickRight.moveDegree / (1440f / 2f), 0);
         transform.localEulerAngles += new Vector3(0, _stickLeft.moveDegree / (1440f / 2f), 0);
@@ -218,26 +233,53 @@ public class Engine : MonoBehaviour
             transform.localEulerAngles.y,
             turn);
 
+        if (_reached == 0)
+        {
+            _turnSpeed += (_stickLeft.thrust + _stickRight.thrust) / 7200f;
+            if (_turnSpeed >= 15f)
+            {
+                _reached = 1;
+            }
+            else
+            {
+                _turnSpeed -= 0.2f;
+                _turnSpeed = Mathf.Clamp(_turnSpeed, 0, 15f);
+            }
+        }
+        else if (_reached == 1)
+        {
+            _turnSpeed -= 0.25f;
+            if(_turnSpeed <= 10f)
+            {
+                _reached = 0;
+            }
+        }
+        else if(_reached == 2)
+        {
+            _turnSpeed -= 0.25f;
+            _turnSpeed = Mathf.Clamp(_turnSpeed,0,15f);
+        }
+
         // Rotation for boosting
-        _frontTurn -= 1f;
-        _frontTurn += (_stickLeft.thrust + _stickRight.thrust) / 1440f;
-        _frontTurn = Mathf.Clamp(_frontTurn, 0f, 15f);
+        //_frontTurn -= 1f;
+        //_frontTurn += (_stickLeft.thrust + _stickRight.thrust) / 1440f;
+        //_frontTurn = Mathf.Clamp(_frontTurn, 0f, 15f);
 
         _boat.transform.localEulerAngles = new Vector3(
-            -_frontTurn,
+            -_turnSpeed,
             _boat.transform.localEulerAngles.y,
             _boat.transform.localEulerAngles.z);
 
         // Particle emission
         var l = _splashL.emission;
         var r = _splashR.emission;
-        l.rateOverTime = 500f * (_stickLeft.movement / 1440f);
-        r.rateOverTime = 500f * (_stickRight.movement / 1440f);
+        l.rateOverTime = 100f * (_stickLeft.movement / 1440f);
+        r.rateOverTime = 100f * (_stickRight.movement / 1440f);
 
         var lf = _splashFL.emission;
         var rf = _spalshFR.emission;
-        lf.rateOverTime = 500f * (_stickLeft.movement + _stickRight.movement) / 2880f;
-        rf.rateOverTime = 500f * (_stickLeft.movement + _stickRight.movement) / 2880f;
+        lf.rateOverTime = 100f * (_stickLeft.movement + _stickRight.movement) / 2880f;
+        rf.rateOverTime = 100f * (_stickLeft.movement + _stickRight.movement) / 2880f;
 
         ForceLimit();
 
@@ -246,6 +288,25 @@ public class Engine : MonoBehaviour
         float rotationR = (_stickRight.moveDegree + _stickRight.thrust) / 45f;
         fakeL.transform.eulerAngles += new Vector3(0, 0, rotationL);
         fakeR.transform.eulerAngles -= new Vector3(0, 0, rotationR);
+
+        float vibL = (_stickLeft.moveDegree + _stickLeft.thrust) / 28800f;
+        float vibR = (_stickRight.moveDegree + _stickRight.thrust) / 28800f;
+
+        if (_newFlag && !_oldFlag)
+        {
+            _vibrateFlag = !_vibrateFlag;
+            if(!_vibrateFlag)
+            {
+                GamePad.SetVibration(player, 0, 0);
+            }   
+        }
+
+        if(_vibrateFlag)
+        {
+            GamePad.SetVibration(player, vibL, vibR);
+        }
+
+        Debug.Log(_vibrateFlag);
 
         //transform.Translate(new Vector3(0,-0.1f,0));
         //if (transform.position.y <= _waterLevel.position.y + 0.002f)
@@ -261,5 +322,10 @@ public class Engine : MonoBehaviour
             Mathf.Clamp(_boatRB.velocity.x, -_maxVelocity.x, _maxVelocity.x),
             Mathf.Clamp(_boatRB.velocity.y, -_maxVelocity.y, _maxVelocity.y),
             Mathf.Clamp(_boatRB.velocity.z, -_maxVelocity.z, _maxVelocity.z));
+    }
+
+    private void OnApplicationQuit()
+    {
+        GamePad.SetVibration(player, 0, 0);
     }
 }
