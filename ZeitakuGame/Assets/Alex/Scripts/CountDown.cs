@@ -19,20 +19,24 @@ public class CountDown : MonoBehaviour
     TimeCounter timeCounter;
 
     bool ennnnnd;
+
+
+
     private void Start()
     {
         ennnnnd = false;
         _currentImage = null;
         _countDown = 4;
-        StartCoroutine("MinusTime");
         _startFlag = false;
 
+        StartCoroutine("MinusTime");
         SoundManager.Instance.PlayBgm("Main");
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (ennnnnd == true)
         {
             return;
@@ -61,7 +65,7 @@ public class CountDown : MonoBehaviour
 
         for (int i = 0; i < _images.Length; i++)
         {
-            if(i == _countDown)
+            if (i == _countDown)
             {
                 _images[i].gameObject.SetActive(true);
             }
