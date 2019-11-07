@@ -48,9 +48,6 @@ public class BoatController : MonoBehaviour
         _currentSpeed = (transform.position - _lastPosition).magnitude / Time.deltaTime;
 
         _lastPosition = transform.position;
-        
-        // 回転をログする
-        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
     }
 
     public float CurrentSpeed
