@@ -12,6 +12,31 @@ public class Engine : MonoBehaviour
     [Range(0, 1f)]
     private float _controllerTiledDistance = 0.5f;
 
+    private bool _changeSpeed;
+    [SerializeField]
+    [Range(0,0.1f)]
+    private float _offsetSpeed;
+
+    [SerializeField]
+    private GameObject fakeL;
+    [SerializeField]
+    private GameObject fakeR;
+
+    [SerializeField]
+    private Transform _waterLevel;
+
+    [SerializeField]
+    private GameObject _boat;
+
+    [SerializeField]
+    private ParticleSystem _splashL;
+    [SerializeField]
+    private ParticleSystem _splashR;
+    [SerializeField]
+    private ParticleSystem _splashFL;
+    [SerializeField]
+    private ParticleSystem _spalshFR;
+
     private struct Stick
     {
         // Bool For Init
@@ -27,6 +52,7 @@ public class Engine : MonoBehaviour
         public float y;
         public float distance;
         public float thrust;
+        public float movement;
 
         public void Init()
         {
@@ -42,6 +68,8 @@ public class Engine : MonoBehaviour
     private Stick _stickLeft;
     private Stick _stickRight;
 
+    private float _frontTurn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,8 +82,19 @@ public class Engine : MonoBehaviour
         _stickLeft.thrust = 0;
         _stickRight.thrust = 0;
 
+        _stickLeft.movement = 0;
+        _stickRight.movement = 0;
+
         _boatRB = transform.GetComponent<Rigidbody>();
         _boatController = transform.GetComponent<BoatController>();
+
+        _changeSpeed = false;
+        //_offsetSpeed = 0.01f;
+
+        if(fakeL == null || fakeR == null)
+        {
+            Debug.Log("Fake is missing");
+        }
     }
 
     private void FixedUpdate()
@@ -103,9 +142,9 @@ public class Engine : MonoBehaviour
             _stickLeft.angle = Mathf.Atan2(_stickLeft.y, _stickLeft.x) * Mathf.Rad2Deg;
             float degree = Mathf.Abs(_stickLeft.angle) - Mathf.Abs(oldAngle);
 
-            if (_stickLeft.angle > oldAngle)
+            if (_stickLeft.angle < oldAngle)
             {
-                if(_stickRight.angle == 0)
+                if(_stickRight.distance < _controllerTiledDistance)
                 {
                     _stickLeft.moveDegree += Mathf.Abs(degree);
                 }
@@ -113,6 +152,7 @@ public class Engine : MonoBehaviour
                 {
                     _stickLeft.thrust += Mathf.Abs(degree);
                 }
+                _stickLeft.movement += Mathf.Abs(degree);
             }
         }
 
@@ -122,9 +162,9 @@ public class Engine : MonoBehaviour
             _stickRight.angle = Mathf.Atan2(_stickRight.y, _stickRight.x) * Mathf.Rad2Deg;
             float degree = Mathf.Abs(_stickRight.angle) - Mathf.Abs(oldAngle);
 
-           if(_stickRight.angle > oldAngle)
+           if(_stickRight.angle < oldAngle)
             {
-                if(_stickLeft.angle == 0)
+                if (_stickLeft.distance < _controllerTiledDistance)
                 {
                     _stickRight.moveDegree += Mathf.Abs(degree);
                 }
@@ -132,31 +172,78 @@ public class Engine : MonoBehaviour
                 {
                     _stickRight.thrust += Mathf.Abs(degree);
                 }
+                _stickRight.movement += Mathf.Abs(degree);
             }
         }
 
         _stickLeft.moveDegree -= 250f * Time.deltaTime;
         _stickRight.moveDegree -= 250f * Time.deltaTime;
 
-        _stickLeft.thrust -= 20f * Time.deltaTime;
-        _stickRight.thrust -= 20f * Time.deltaTime;
+        float minus = 200f;
+        _stickLeft.thrust -= minus * Time.deltaTime;
+        _stickRight.thrust -= minus * Time.deltaTime;
+
+        _stickLeft.movement -= 250f * Time.deltaTime;
+        _stickRight.movement -= 250f * Time.deltaTime;
 
         _stickLeft.moveDegree = Mathf.Clamp(_stickLeft.moveDegree, 0, 360f * 4f);
         _stickRight.moveDegree = Mathf.Clamp(_stickRight.moveDegree, 0, 360f * 4f);
 
-        _stickLeft.thrust = Mathf.Clamp(_stickLeft.thrust, 0, 360 * 4f);
-        _stickRight.thrust = Mathf.Clamp(_stickRight.thrust, 0, 360 * 4f);
+        _stickLeft.thrust = Mathf.Clamp(_stickLeft.thrust, 0.0f, 360 * 4f);
+        _stickRight.thrust = Mathf.Clamp(_stickRight.thrust, 0.0f, 360 * 4f);
+
+        _stickLeft.movement = Mathf.Clamp(_stickLeft.movement, 0.0f, 360 * 4f);
+        _stickRight.movement = Mathf.Clamp(_stickRight.movement, 0.0f, 360 * 4f);
 
         float bindThrust = (_stickLeft.thrust + _stickRight.thrust) / 360f * 4f;
-        transform.Translate(new Vector3(0, 0, bindThrust * 0.05f * Time.deltaTime));
-        //_boatRB.velocity += new Vector3(0, 0, bindThrust * Time.deltaTime);
+        transform.Translate(new Vector3(0, 0, bindThrust * (0.1f + _offsetSpeed) * Time.deltaTime));
 
         transform.localEulerAngles -= new Vector3(0, _stickRight.moveDegree / (1440f / 2f), 0);
         transform.localEulerAngles += new Vector3(0, _stickLeft.moveDegree / (1440f / 2f), 0);
 
+        // Rotation for turning
+        float turn = (_stickRight.moveDegree - _stickLeft.moveDegree) / 72f;
+        turn = Mathf.Clamp(turn, -20f, 20f);
+
+        transform.localEulerAngles = new Vector3(
+            transform.localEulerAngles.x,
+            transform.localEulerAngles.y,
+            turn);
+
+        // Rotation for boosting
+        _frontTurn -= 1f;
+        _frontTurn += (_stickLeft.thrust + _stickRight.thrust) / 1440f;
+        _frontTurn = Mathf.Clamp(_frontTurn, 0f, 15f);
+
+        _boat.transform.localEulerAngles = new Vector3(
+            -_frontTurn,
+            _boat.transform.localEulerAngles.y,
+            _boat.transform.localEulerAngles.z);
+
+        // Particle emission
+        var l = _splashL.emission;
+        var r = _splashR.emission;
+        l.rateOverTime = 500f * (_stickLeft.movement / 1440f);
+        r.rateOverTime = 500f * (_stickRight.movement / 1440f);
+
+        var lf = _splashFL.emission;
+        var rf = _spalshFR.emission;
+        lf.rateOverTime = 500f * (_stickLeft.movement + _stickRight.movement) / 2880f;
+        rf.rateOverTime = 500f * (_stickLeft.movement + _stickRight.movement) / 2880f;
+
         ForceLimit();
 
-        Debug.Log(_boatRB.velocity);
+        // Propeller Rotation
+        float rotationL = (_stickLeft.moveDegree + _stickLeft.thrust) / 45f;
+        float rotationR = (_stickRight.moveDegree + _stickRight.thrust) / 45f;
+        fakeL.transform.eulerAngles += new Vector3(0, 0, rotationL);
+        fakeR.transform.eulerAngles -= new Vector3(0, 0, rotationR);
+
+        //transform.Translate(new Vector3(0,-0.1f,0));
+        //if (transform.position.y <= _waterLevel.position.y + 0.002f)
+        //{
+        //    transform.position = new Vector3(transform.position.x, _waterLevel.position.y + 0.002f, transform.position.z);
+        //}
     }
 
     private void ForceLimit()

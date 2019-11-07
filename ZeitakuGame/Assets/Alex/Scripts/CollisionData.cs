@@ -13,34 +13,33 @@ public class CollisionData : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.tag == "Grass")
+        {
+            CameraEffects.ShakeOnce(1f,2f);
+            SoundManager.Instance.PlaySe("Collide");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Barrel")
+        {
+            CameraEffects.ShakeOnce(1f, 1f);
+            SoundManager.Instance.PlaySe("Collide");
+        }
+        else if(collision.collider.tag == "Log")
+        {
+            CameraEffects.ShakeOnce(1f, 5f);
+            SoundManager.Instance.PlaySe("Collide");
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Grass")
         {
-            _boatRB.velocity *= (1f - 0.08f);
-            Debug.Log("Grass Hit !");
-        }
-        else if(other.tag == "Barrel")
-        {
-            Rigidbody otherRB = other.transform.GetComponent<Rigidbody>();
-            if (otherRB == null)
-            {
-                Debug.LogError("Rigidbody is missing");
-            }
-
-            otherRB.velocity += _boatRB.velocity;
             _boatRB.velocity = new Vector3(0, 0, -2f);
-
-            Debug.Log("Barrel Hit !");
-        }
-        else if(other.tag == "Log" || other.tag == "Shark")
-        {
-            _boatRB.velocity = new Vector3(0, 0, -5f);
-
-            Debug.Log("Log Hit !");
+            Debug.Log("Grass Hit !");
         }
     }
 }
