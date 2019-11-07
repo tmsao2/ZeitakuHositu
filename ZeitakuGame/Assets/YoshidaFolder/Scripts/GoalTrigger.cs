@@ -34,9 +34,10 @@ public class GoalTrigger : MonoBehaviour
     {
         if(end == false)
         { return; }
-        if (time>300)
+        if (time>200)
         {
-            GameManager.SceneChange("ResultScene");
+            Fade.FadeOut("ClearScene");
+            //GameManager.SceneChange("ResultScene");
         }
         else
         {

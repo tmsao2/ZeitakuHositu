@@ -32,6 +32,10 @@ public class CollisionData : MonoBehaviour
             CameraEffects.ShakeOnce(1f, 5f);
             SoundManager.Instance.PlaySe("Collide");
         }
+        else if(collision.collider.tag == "Wall")
+        {
+            CameraEffects.ShakeOnce(0.2f, 0.2f);
+        }
     }
 
     private void OnTriggerStay(Collider other)

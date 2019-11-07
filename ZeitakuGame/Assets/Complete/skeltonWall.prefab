@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5167595659757725701}
   - component: {fileID: 2736182259527326347}
   - component: {fileID: 6015219394726602177}
-  m_Layer: 0
+  - component: {fileID: 3360200968283168703}
+  m_Layer: 8
   m_Name: skeltonWall
-  m_TagString: Log
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,9 +87,23 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4655851354001765038}
+  m_Material: {fileID: 13400000, guid: b57a9800caaf4784c9fb4c817e4acec0, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 5, z: 0.1}
+  m_Center: {x: 0, y: 2, z: 0}
+--- !u!136 &3360200968283168703
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655851354001765038}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8, y: 5, z: 0.8}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Radius: 0.5
+  m_Height: 5.653203
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.3266015, z: 0}

@@ -133,9 +133,9 @@ public class ArrangementObstacle : MonoBehaviour
             possInstantiateCount++;
         }
         GameObject wall;
-        wall = Instantiate(skeltonWall, new Vector3(transform.position.x + stageWide+4, transform.position.y, transform.position.z), new Quaternion());
+        wall = Instantiate(skeltonWall, new Vector3(transform.position.x + stageWide+8, transform.position.y, transform.position.z), new Quaternion());
         wall.transform.parent = stagesParent.transform;
-        wall = Instantiate(skeltonWall, new Vector3(transform.position.x - stageWide-4, transform.position.y, transform.position.z), new Quaternion());
+        wall = Instantiate(skeltonWall, new Vector3(transform.position.x - stageWide-8, transform.position.y, transform.position.z), new Quaternion());
         wall.transform.parent = stagesParent.transform;
     }
 
