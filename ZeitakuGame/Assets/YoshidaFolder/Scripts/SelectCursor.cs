@@ -4,20 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SelectCasol : MonoBehaviour
+public class SelectCursor : MonoBehaviour
 {
     [SerializeField]
     EventSystem eventFlag;
 
     [SerializeField]
-    Button first;
-    [SerializeField]
-    Button second;
-    [SerializeField]
-    Button third;
-    [SerializeField]
-    Button back;
-
+    Button[] buttons;
+    
     [SerializeField]
     RectTransform title;
     [SerializeField]
@@ -67,20 +61,20 @@ public class SelectCasol : MonoBehaviour
         {
             casol--;
         }
-        if (casol > 3)
+        if (casol > buttons.Length-1)
         {
             casol = 0;
         }
         if (casol < 0)
         {
-            casol = 3;
+            casol = buttons.Length - 1;
         }
-        switch (casol)
+        for(int i=0;i<buttons.Length;++i)
         {
-            case (0): first.Select(); break;
-            case (1): second.Select(); break;
-            case (2): third.Select(); break;
-            case (3): back.Select(); break;
+            if(casol==i)
+            {
+                buttons[i].Select();
+            }
         }
         beforeTrigger = Input.GetAxis("Vertical");
     }

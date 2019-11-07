@@ -10,6 +10,7 @@ public class SelectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Fade.FadeIn();
         waitTime = 0;
         timerStart = false;
     }
@@ -29,7 +30,7 @@ public class SelectManager : MonoBehaviour
         }
         else
         { 
-            GameManager.SceneChange("GameScene");
+            Fade.FadeOut("GameScene");
         }
         //if (Input.GetAxis("Submit") > 0)
         //{

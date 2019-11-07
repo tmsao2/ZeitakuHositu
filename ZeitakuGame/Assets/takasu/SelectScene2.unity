@@ -489,36 +489,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: boat
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: bb1dcdb573ad8a5408d9694ef821278e, type: 2}
-    - target: {fileID: -5410762940040001521, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.045387566
-      objectReference: {fileID: 0}
-    - target: {fileID: -5410762940040001521, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 621c35d880f17e64b9eae4c4608a382e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -588,6 +558,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bb1dcdb573ad8a5408d9694ef821278e, type: 2}
+    - target: {fileID: -5410762940040001521, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.045387566
+      objectReference: {fileID: 0}
+    - target: {fileID: -5410762940040001521, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4362350786599725106, guid: 621c35d880f17e64b9eae4c4608a382e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621c35d880f17e64b9eae4c4608a382e, type: 3}
@@ -718,7 +718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 163.9}
+  m_AnchoredPosition: {x: 150, y: 163.90002}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744794131
@@ -1099,7 +1099,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -516, y: -351.1}
-  m_SizeDelta: {x: 331.1, y: 120.8}
+  m_SizeDelta: {x: 590, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1434451173
 MonoBehaviour:
@@ -1205,7 +1205,7 @@ Animator:
   m_GameObject: {fileID: 1434451171}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f928292080c6a2b409e9cc1bbc5d04ed, type: 2}
+  m_Controller: {fileID: 9100000, guid: 864df6eede72c7a438a56ef18b87833c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1528,10 +1528,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventFlag: {fileID: 871697286}
-  first: {fileID: 744794131}
-  second: {fileID: 186999664}
-  third: {fileID: 241994572}
-  back: {fileID: 1434451173}
+  buttons:
+  - {fileID: 744794131}
+  - {fileID: 186999664}
+  - {fileID: 241994572}
+  - {fileID: 1434451173}
   title: {fileID: 1698456064}
   select: {fileID: 1465331718}
   speed: 20
