@@ -8,8 +8,6 @@ public class CountDown : MonoBehaviour
     private int _countDown;
     private bool _startFlag;
 
-    [SerializeField]
-    private Text _time;
 
     [SerializeField]
     private Image[] _images = new Image[4];
@@ -20,21 +18,10 @@ public class CountDown : MonoBehaviour
     [SerializeField]
     TimeCounter timeCounter;
 
-
     bool ennnnnd;
     private void Start()
     {
         ennnnnd = false;
-        //if(boatObject==null)
-        //{
-        //    boatObject = GameObject.Find("boat");
-        //}
-        //if(timeCounter==null)
-        //{
-        //    timeCounter = GameObject.Find("");
-        //}
-        //boatObject = GetComponent<Engine>();
-        //timeCounter = GetComponent<TimeCounter>();
         _currentImage = null;
         _countDown = 4;
         StartCoroutine("MinusTime");
@@ -50,22 +37,12 @@ public class CountDown : MonoBehaviour
         }
         if (!_startFlag)
         {
-            if (_countDown == 4)
-            {
-                _time.text = "";
-            }
-            else
-            {
-                _time.text = (_countDown.ToString());
-                _currentImage = _images[_countDown + 1];
-            }
 
             Debug.Log(_countDown);
 
             if (_countDown <= 0)
             {
                 _startFlag = true;
-                _time.text = ("START !!!");
                 Debug.Log("START !!!");
                 boatObject.start = true;
                 timeCounter.start = true;
@@ -76,13 +53,19 @@ public class CountDown : MonoBehaviour
             if (_countDown <= -1)
             {
                 StopCoroutine("MinusTime");
-                _time.CrossFadeAlpha(0, 0.2f, false);
+                ennnnnd = true;
+            }
+        }
 
-                if (_time.color.a == 0)
-                {
-                    Destroy(_time);
-                    ennnnnd = true;
-                }
+        for (int i = 0; i < _images.Length; i++)
+        {
+            if(i == _countDown)
+            {
+                _images[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                _images[i].gameObject.SetActive(false);
             }
         }
     }

@@ -213,9 +213,13 @@ public class SoundManager : MonoBehaviour
     //------------------------------------------------------------------------------
     public bool IsBgmPlaying { get { return bgmSource.isPlaying; } }
 
-    public bool IsSePlaying(int index)
+    public bool IsSePlaying(string name)
     {
-        return seSources[index].isPlaying;
+        foreach (AudioSource source in seSources) 
+        {
+            return source.isPlaying;
+        }
+        return false;
     }
 
     //------------------------------------------------------------------------------
