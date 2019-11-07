@@ -31,6 +31,7 @@ public class SelectManager : MonoBehaviour
         else
         { 
             Fade.FadeOut("GameScene");
+            SoundManager.Instance.StopBgm();
         }
         //if (Input.GetAxis("Submit") > 0)
         //{
@@ -41,5 +42,6 @@ public class SelectManager : MonoBehaviour
    public void BegginerStage()
     {
         timerStart = true;
+        SoundManager.Instance.PlaySe("ButtonDecision");
     }
 }

@@ -101,7 +101,7 @@ public class SoundManager : MonoBehaviour
     private Dictionary<string, int> seIndexes = new Dictionary<string, int>();
     private Dictionary<string, int> bgmIndexes = new Dictionary<string, int>();
 
-    private const int cNumChannel = 2;
+    private const int cNumChannel = 10;
 
     private AudioSource bgmSource;
     private Handle bgmHandle = new Handle();
@@ -215,11 +215,7 @@ public class SoundManager : MonoBehaviour
 
     public bool IsSePlaying(string name)
     {
-        foreach (AudioSource source in seSources) 
-        {
-            return source.isPlaying;
-        }
-        return false;
+        return seSources[GetSeIndex(name)].isPlaying;
     }
 
     //------------------------------------------------------------------------------
