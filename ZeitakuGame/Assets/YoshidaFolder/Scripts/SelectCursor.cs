@@ -35,6 +35,7 @@ public class SelectCursor : MonoBehaviour
         titlePos = title.localPosition;
         selectPos = select.localPosition;
         eventFlag.enabled = false;
+        SoundManager.Instance.PlayBgm("Title");
     }
 
     // Update is called once per frame
@@ -55,7 +56,7 @@ public class SelectCursor : MonoBehaviour
         if(Input.GetButtonDown("Submit"))
         {
             slide = true;
-            
+            SoundManager.Instance.PlaySe("TitleDecision");
         }
         if(slide)
         {
@@ -78,10 +79,12 @@ public class SelectCursor : MonoBehaviour
         if (Input.GetAxis("Vertical") < 0 && beforeTrigger == 0)
         {
             casol++;
+            SoundManager.Instance.PlaySe("cursor");
         }
         if (Input.GetAxis("Vertical") > 0 && beforeTrigger == 0)
         {
             casol--;
+            SoundManager.Instance.PlaySe("cursor");
         }
         if (casol > buttons.Length-1)
         {
