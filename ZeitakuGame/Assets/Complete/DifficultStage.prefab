@@ -102,47 +102,62 @@ MonoBehaviour:
   skeltonWall: {fileID: 4655851354001765038, guid: 6a3eb9c5501ee624bbd2ab1d7ef0d360,
     type: 3}
   stageWide: 12
-  diff: 0
+  diff: 2
   obstacles:
   - obstacleArray: {fileID: 6403403040429589720, guid: 6c05d8ae37f9385428ad9d40822c9d23,
       type: 3}
-    perf: 30
-  - obstacleArray: {fileID: 5023362685734833058, guid: 860b9020fd9af6b4f9dfb541f288282a,
-      type: 3}
-    perf: 15
-  - obstacleArray: {fileID: 4400556609788758750, guid: d5fdbe612b47e5343bd6fae740265f5e,
-      type: 3}
-    perf: 15
-  - obstacleArray: {fileID: 8488580460765116379, guid: 79ffd4db59ac54a47912cdeee5751f02,
-      type: 3}
-    perf: 20
-  - obstacleArray: {fileID: 6152871043449843504, guid: f231c8ef8357ec8409621b884ea23bc2,
-      type: 3}
-    perf: 15
-  - obstacleArray: {fileID: 8717015007482896541, guid: 3ffc4f21abf2aca448bf5a232f75d514,
-      type: 3}
-    perf: 15
-  - obstacleArray: {fileID: 3545678684247718900, guid: a3dbba9f6bbe8ed429345f716e059ddd,
-      type: 3}
-    perf: 15
-  - obstacleArray: {fileID: 6142774220170575139, guid: e0ec7390b32f6204f8e22b7e35ead45f,
-      type: 3}
-    perf: 15
-  - obstacleArray: {fileID: 7046912616232076812, guid: 54fb2d9e7d9532c49afb502823a613fd,
-      type: 3}
-    perf: 20
-  - obstacleArray: {fileID: 8814326070683550056, guid: 762bddbf071424944ae4d7878c70c655,
-      type: 3}
-    perf: 15
-  - obstacleArray: {fileID: 3851369372165853285, guid: bf6a6026e86c0604b965190c13ef161f,
-      type: 3}
-    perf: 15
-  - obstacleArray: {fileID: 2062835223663131162, guid: de14d8f3000acc643ad95a90c155c2f4,
+    perf: 50
+  - obstacleArray: {fileID: 3677845041844402480, guid: 8c670bd194ca3324d8d8dd3066793598,
       type: 3}
     perf: 10
-  - obstacleArray: {fileID: 6600831167114388066, guid: bc1f9a3aaa1c64940afccff6453d1349,
+  - obstacleArray: {fileID: 2603921234427758616, guid: 605d34fc84863cf44b0f29928a06e4d7,
       type: 3}
-    perf: 3
+    perf: 10
+  - obstacleArray: {fileID: 6239428988998514139, guid: 23e4ef4db79cce54e96619b6fc1e0f9e,
+      type: 3}
+    perf: 10
+  - obstacleArray: {fileID: 7509479379554216032, guid: 0b61fa80b4a27824ea2fbc264094dce1,
+      type: 3}
+    perf: 10
+  - obstacleArray: {fileID: 7639111313145220277, guid: 2d32338f563393c4c841cd0082a2677c,
+      type: 3}
+    perf: 12
+  - obstacleArray: {fileID: 8179001425174701717, guid: d4f5c458189c9ef499916ccb209d9b3f,
+      type: 3}
+    perf: 12
+  - obstacleArray: {fileID: 5031408808951981323, guid: 94b908453569fb147b29c3b31204425c,
+      type: 3}
+    perf: 12
+  - obstacleArray: {fileID: 127861356748124276, guid: fa8a577f455aaf545ac55c4a04b7a2f3,
+      type: 3}
+    perf: 12
+  - obstacleArray: {fileID: 7500423543211785568, guid: b9e4de0330e152640b567912d68e047e,
+      type: 3}
+    perf: 10
+  - obstacleArray: {fileID: 4773555877146696794, guid: 7d68dba467c0ca44fa3d5dc22f6b0d95,
+      type: 3}
+    perf: 10
+  - obstacleArray: {fileID: 1942940372790528984, guid: 4f15f72269cddb94a957d37f7925283c,
+      type: 3}
+    perf: 10
+  - obstacleArray: {fileID: 5701927448447181739, guid: f055c195bc8247549a1497f13ec62400,
+      type: 3}
+    perf: 10
+  - obstacleArray: {fileID: 611896053074153892, guid: 0d453a869351c7a46a1e99b64ce3a367,
+      type: 3}
+    perf: 8
+  - obstacleArray: {fileID: 3505363492863644870, guid: 0b2c9112bfb7c3c4fa514994fdbdb290,
+      type: 3}
+    perf: 8
+  - obstacleArray: {fileID: 3675217471609317688, guid: 8f3f50100634b984ea69519ffe84e795,
+      type: 3}
+    perf: 8
+  - obstacleArray: {fileID: 4389406643090562005, guid: 71520e101d8f5854e886bed1e0b60b5d,
+      type: 3}
+    perf: 8
+  - obstacleArray: {fileID: 1370166387004566945, guid: 5bcddabb5a3379d4c8368698a2d3b1b5,
+      type: 3}
+    perf: 8
   obstacleCountMax: 30
 --- !u!65 &6062801730908716671
 BoxCollider:
@@ -171,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerShip: {fileID: 0}
   finishUI: {fileID: 0}
+  timetrigger: {fileID: 0}
 --- !u!1001 &1630394149183727558
 PrefabInstance:
   m_ObjectHideFlags: 0

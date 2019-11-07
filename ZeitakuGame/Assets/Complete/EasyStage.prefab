@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9175855513345010090
 Transform:
   m_ObjectHideFlags: 0
@@ -106,38 +106,14 @@ MonoBehaviour:
   obstacles:
   - obstacleArray: {fileID: 6403403040429589720, guid: 6c05d8ae37f9385428ad9d40822c9d23,
       type: 3}
-    perf: 3
-  - obstacleArray: {fileID: 5023362685734833058, guid: 860b9020fd9af6b4f9dfb541f288282a,
+    perf: 20
+  - obstacleArray: {fileID: 2603921234427758616, guid: 605d34fc84863cf44b0f29928a06e4d7,
       type: 3}
     perf: 3
-  - obstacleArray: {fileID: 4400556609788758750, guid: d5fdbe612b47e5343bd6fae740265f5e,
+  - obstacleArray: {fileID: 7639111313145220277, guid: 2d32338f563393c4c841cd0082a2677c,
       type: 3}
     perf: 3
-  - obstacleArray: {fileID: 8488580460765116379, guid: 79ffd4db59ac54a47912cdeee5751f02,
-      type: 3}
-    perf: 3
-  - obstacleArray: {fileID: 6152871043449843504, guid: f231c8ef8357ec8409621b884ea23bc2,
-      type: 3}
-    perf: 3
-  - obstacleArray: {fileID: 8717015007482896541, guid: 3ffc4f21abf2aca448bf5a232f75d514,
-      type: 3}
-    perf: 3
-  - obstacleArray: {fileID: 3545678684247718900, guid: a3dbba9f6bbe8ed429345f716e059ddd,
-      type: 3}
-    perf: 3
-  - obstacleArray: {fileID: 6142774220170575139, guid: e0ec7390b32f6204f8e22b7e35ead45f,
-      type: 3}
-    perf: 3
-  - obstacleArray: {fileID: 7046912616232076812, guid: 54fb2d9e7d9532c49afb502823a613fd,
-      type: 3}
-    perf: 3
-  - obstacleArray: {fileID: 8814326070683550056, guid: 762bddbf071424944ae4d7878c70c655,
-      type: 3}
-    perf: 3
-  - obstacleArray: {fileID: 3851369372165853285, guid: bf6a6026e86c0604b965190c13ef161f,
-      type: 3}
-    perf: 3
-  - obstacleArray: {fileID: 2062835223663131162, guid: de14d8f3000acc643ad95a90c155c2f4,
+  - obstacleArray: {fileID: 7500423543211785568, guid: b9e4de0330e152640b567912d68e047e,
       type: 3}
     perf: 3
   obstacleCountMax: 30
@@ -168,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerShip: {fileID: 0}
   finishUI: {fileID: 0}
+  timetrigger: {fileID: 0}
 --- !u!1001 &4531726585518059374
 PrefabInstance:
   m_ObjectHideFlags: 0

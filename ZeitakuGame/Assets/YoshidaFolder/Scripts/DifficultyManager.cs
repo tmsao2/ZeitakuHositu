@@ -30,9 +30,9 @@ public class DifficultyManager : MonoBehaviour
         int timeRimit = 0;
         switch (diff)
         {
-            case (difficulty.easy): stageCreater = easyStage; timeRimit = 60; ; break;
-            case (difficulty.normal): stageCreater = normalStage; timeRimit = 60; break;
-            case (difficulty.hard): stageCreater = difficultStage; timeRimit = 60; break;
+            case (difficulty.easy): stageCreater = easyStage; timeRimit = 120; ; break;
+            case (difficulty.normal): stageCreater = normalStage; timeRimit = 180; break;
+            case (difficulty.hard): stageCreater = difficultStage; timeRimit = 240; break;
         }
         timeCounter.SetLimit(timeRimit);
         TimeCounter.timeRimitMax = timeRimit;
