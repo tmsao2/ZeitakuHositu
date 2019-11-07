@@ -24,13 +24,12 @@ public class SelectManager : MonoBehaviour
         }
 
 
-        if(++waitTime<100)
+        if(++waitTime<50)
         {
             waitTime++;
         }
         else
         { 
-            Fade.FadeOut("GameScene");
             SoundManager.Instance.StopBgm();
         }
         //if (Input.GetAxis("Submit") > 0)
@@ -41,7 +40,11 @@ public class SelectManager : MonoBehaviour
 
    public void BegginerStage()
     {
+        if (!timerStart)
+        {
+            SoundManager.Instance.PlaySe("ButtonDecision");
+        }
         timerStart = true;
-        SoundManager.Instance.PlaySe("ButtonDecision");
+        Fade.FadeOut("GameScene");
     }
 }
