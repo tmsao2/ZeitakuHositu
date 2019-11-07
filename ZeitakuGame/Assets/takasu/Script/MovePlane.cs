@@ -21,7 +21,7 @@ public class MovePlane : MonoBehaviour
     {
         if (transform.position.x <= -transform.lossyScale.x * 10 / 4 && !create)
         {
-            Instantiate(prefab, new Vector3(transform.lossyScale.x * 10 - transform.lossyScale.x * 10 / 4 - speed, 0, 0), Quaternion.identity);
+            Instantiate(prefab, new Vector3(transform.lossyScale.x * 10 - transform.lossyScale.x * 10 / 4 - speed*2, 0, 0), Quaternion.identity);
             create = true;
         }
         else if (transform.position.x < -transform.lossyScale.x * 10)

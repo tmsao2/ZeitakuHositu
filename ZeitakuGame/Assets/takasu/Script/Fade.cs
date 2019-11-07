@@ -17,7 +17,7 @@ public class Fade:MonoBehaviour
     public static bool isFadeOut = false;
 
     //フェードしたい時間（単位は秒）
-    private static float fadeTime = 3;
+    private static float fadeTime = 2;
 
     //遷移先のシーン番号
     private static string nextScene = "";

@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 public class ClearCursor : MonoBehaviour
 {
     [SerializeField]
     Button[] buttons;
+    [SerializeField]
+    EventSystem eventFlag;
 
     float casol;
     private float beforeTrigger;
@@ -45,6 +48,11 @@ public class ClearCursor : MonoBehaviour
                 buttons[i].Select();
             }
         }
+        if(Fade.isFadeOut)
+        {
+            eventFlag.enabled = false;
+        }
+
         beforeTrigger = Input.GetAxis("Horizontal");
     }
 }
