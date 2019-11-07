@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XInputDotNetPure;
 
 public class CollisionData : MonoBehaviour
 {
+    private GamePad _gamePad;
+
     private Rigidbody _boatRB;
 
     private void Start()
@@ -15,8 +18,10 @@ public class CollisionData : MonoBehaviour
     {
         if(other.tag == "Grass")
         {
+            Vibrate(0.5f, 0.5f);
             CameraEffects.ShakeOnce(1f,2f);
             SoundManager.Instance.PlaySe("Collide");
+            _boatRB.velocity = new Vector3(0, 0, -10f);
         }
     }
 
@@ -24,11 +29,13 @@ public class CollisionData : MonoBehaviour
     {
         if(collision.collider.tag == "Barrel")
         {
+            Vibrate(0.5f, 0.5f);
             CameraEffects.ShakeOnce(1f, 1f);
             SoundManager.Instance.PlaySe("Collide");
         }
         else if(collision.collider.tag == "Log")
         {
+            Vibrate(1f, 1f);
             CameraEffects.ShakeOnce(1f, 5f);
             SoundManager.Instance.PlaySe("Collide");
         }
@@ -38,7 +45,6 @@ public class CollisionData : MonoBehaviour
     {
         if (other.tag == "Grass")
         {
-            _boatRB.velocity = new Vector3(0, 0, -2f);
             Debug.Log("Grass Hit !");
         }
         else if(other.tag== "FloatPall")
@@ -50,5 +56,18 @@ public class CollisionData : MonoBehaviour
             }
             otherRB.velocity += _boatRB.velocity;
         }
+    }
+
+    private void Vibrate(float left,float right)
+    {
+        PlayerIndex player = PlayerIndex.One;
+        GamePad.SetVibration(player, left, right);
+        Invoke("Reset", 0.3f);
+    }
+
+    private void Reset()
+    {
+        PlayerIndex player = PlayerIndex.One;
+        GamePad.SetVibration(player, 0, 0);
     }
 }
