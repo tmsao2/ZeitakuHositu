@@ -20,8 +20,11 @@ public class CountDown : MonoBehaviour
     [SerializeField]
     TimeCounter timeCounter;
 
+
+    bool ennnnnd;
     private void Start()
     {
+        ennnnnd = false;
         //if(boatObject==null)
         //{
         //    boatObject = GameObject.Find("boat");
@@ -30,8 +33,8 @@ public class CountDown : MonoBehaviour
         //{
         //    timeCounter = GameObject.Find("");
         //}
-        boatObject = GetComponent<Engine>();
-        timeCounter = GetComponent<TimeCounter>();
+        //boatObject = GetComponent<Engine>();
+        //timeCounter = GetComponent<TimeCounter>();
         _currentImage = null;
         _countDown = 4;
         StartCoroutine("MinusTime");
@@ -41,9 +44,13 @@ public class CountDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!_startFlag)
+        if (ennnnnd == true)
         {
-            if(_countDown == 4)
+            return;
+        }
+        if (!_startFlag)
+        {
+            if (_countDown == 4)
             {
                 _time.text = "";
             }
@@ -52,10 +59,10 @@ public class CountDown : MonoBehaviour
                 _time.text = (_countDown.ToString());
                 _currentImage = _images[_countDown + 1];
             }
-            
+
             Debug.Log(_countDown);
 
-            if(_countDown <= 0)
+            if (_countDown <= 0)
             {
                 _startFlag = true;
                 _time.text = ("START !!!");
@@ -66,7 +73,7 @@ public class CountDown : MonoBehaviour
         }
         else
         {
-            if(_countDown <= -1)
+            if (_countDown <= -1)
             {
                 StopCoroutine("MinusTime");
                 _time.CrossFadeAlpha(0, 0.2f, false);
@@ -74,6 +81,7 @@ public class CountDown : MonoBehaviour
                 if (_time.color.a == 0)
                 {
                     Destroy(_time);
+                    ennnnnd = true;
                 }
             }
         }
@@ -81,7 +89,7 @@ public class CountDown : MonoBehaviour
 
     IEnumerator MinusTime()
     {
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(1);
             _countDown--;

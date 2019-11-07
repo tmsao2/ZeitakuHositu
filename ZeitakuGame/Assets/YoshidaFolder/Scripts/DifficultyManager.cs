@@ -30,7 +30,7 @@ public class DifficultyManager : MonoBehaviour
         int timeRimit = 0;
         switch (diff)
         {
-            case (difficulty.easy): stageCreater = easyStage; timeRimit = 60; ; break;
+            case (difficulty.easy): stageCreater = easyStage; timeRimit = 5; ; break;
             case (difficulty.normal): stageCreater = normalStage; timeRimit = 60; break;
             case (difficulty.hard): stageCreater = difficultStage; timeRimit = 60; break;
         }

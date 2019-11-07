@@ -75,7 +75,7 @@ public class Engine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        start = true;
+        start = false;
         _stickLeft.Init();
         _stickRight.Init();
 

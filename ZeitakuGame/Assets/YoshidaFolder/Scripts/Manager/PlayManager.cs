@@ -30,6 +30,16 @@ public class PlayManager : MonoBehaviour
         }
     }
 
+    public void FadeOutGoTitle()
+    {
+        Fade.FadeOut("SelectScene2");
+    }
+
+    public void FadeOutGoRetry()
+    {
+        Fade.FadeOut("GameScene");
+    }
+
     public static void Selected(int stage)
     {
         selectedStage = stage;
