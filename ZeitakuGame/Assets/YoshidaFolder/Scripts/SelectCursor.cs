@@ -22,7 +22,7 @@ public class SelectCursor : MonoBehaviour
 
     float casol;
     private float beforeTrigger;
-    bool slide = false;
+    bool slide;
 
     Vector3 titlePos;
     Vector3 selectPos;
@@ -36,6 +36,7 @@ public class SelectCursor : MonoBehaviour
         selectPos = select.localPosition;
         eventFlag.enabled = false;
         SoundManager.Instance.PlayBgm("Title");
+        slide = false;
     }
 
     // Update is called once per frame
@@ -53,7 +54,7 @@ public class SelectCursor : MonoBehaviour
 
     void Title()
     {
-        if(Input.GetButtonDown("Submit"))
+        if(Input.GetButtonDown("Submit")&& !slide)
         {
             slide = true;
             SoundManager.Instance.PlaySe("TitleDecision");
@@ -67,7 +68,6 @@ public class SelectCursor : MonoBehaviour
             }
             else
             {
-                slide = false;
                 eventFlag.enabled = true;
             }
         }
