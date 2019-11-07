@@ -26,6 +26,8 @@ public class CountDown : MonoBehaviour
         _countDown = 4;
         StartCoroutine("MinusTime");
         _startFlag = false;
+
+        SoundManager.Instance.PlayBgm("Main");
     }
 
     // Update is called once per frame
