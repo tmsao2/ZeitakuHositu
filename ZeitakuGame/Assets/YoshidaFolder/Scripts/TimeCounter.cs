@@ -77,7 +77,7 @@ public class TimeCounter : MonoBehaviour
         timeRimit = limit;
     }
 
-    void StopCount()
+    public void StopCount()
     {
         cleartime = timeRimit;
         gameEnd = true;

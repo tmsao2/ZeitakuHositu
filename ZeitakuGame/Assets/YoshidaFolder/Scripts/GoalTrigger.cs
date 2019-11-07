@@ -14,6 +14,9 @@ public class GoalTrigger : MonoBehaviour
     int time=0;
     bool end=false;
 
+    [SerializeField]
+    TimeCounter timetrigger;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +56,7 @@ public class GoalTrigger : MonoBehaviour
             Debug.Log("end");
             end = true;
             finishUI.SetActive(true);
+            timetrigger.StopCount();
         }
     }
 }
