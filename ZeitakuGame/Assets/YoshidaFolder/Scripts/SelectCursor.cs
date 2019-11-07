@@ -22,6 +22,7 @@ public class SelectCursor : MonoBehaviour
 
     float casol;
     private float beforeTrigger;
+    bool slide = false;
 
     Vector3 titlePos;
     Vector3 selectPos;
@@ -39,14 +40,35 @@ public class SelectCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveUI();
+        if(eventFlag.enabled)
+        {
+            Select();
+        }
+        else
+        {
+            Title();
+        }
     }
 
     void Title()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetButtonDown("Submit"))
         {
-            eventFlag.enabled = true;
+            slide = true;
+            
+        }
+        if(slide)
+        {
+            if (select.localPosition.x > -120)
+            {
+                title.localPosition = new Vector3(title.localPosition.x - speed, title.localPosition.y, title.localPosition.z);
+                select.localPosition = new Vector3(select.localPosition.x - speed, select.localPosition.y, select.localPosition.z);
+            }
+            else
+            {
+                slide = false;
+                eventFlag.enabled = true;
+            }
         }
     }
 
@@ -76,42 +98,11 @@ public class SelectCursor : MonoBehaviour
                 buttons[i].Select();
             }
         }
+        if (Fade.isFadeOut)
+        {
+            eventFlag.enabled = false;
+        }
         beforeTrigger = Input.GetAxis("Vertical");
-    }
 
-    public void Back()
-    {
-        eventFlag.enabled = false;
-        title.localPosition = selectPos;
-        casol = 0;
-    }
-
-    void MoveUI()
-    {
-        if(eventFlag.enabled)
-        {
-            if (select.localPosition.x > -120)
-            {
-                title.localPosition = new Vector3(title.localPosition.x - speed, title.localPosition.y, title.localPosition.z);
-                select.localPosition = new Vector3(select.localPosition.x - speed, select.localPosition.y, select.localPosition.z);
-            }
-            else
-            {
-                Select();
-            }
-        }
-        else
-        {
-            if (title.localPosition.x > titlePos.x)
-            {
-                title.localPosition = new Vector3(title.localPosition.x - speed, title.localPosition.y, title.localPosition.z);
-                select.localPosition = new Vector3(select.localPosition.x - speed, select.localPosition.y, select.localPosition.z);
-            }
-            else
-            {
-                Title();
-                select.localPosition = selectPos;
-            }
-        }
     }
 }
