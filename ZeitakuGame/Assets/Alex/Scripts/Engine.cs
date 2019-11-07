@@ -17,7 +17,7 @@ public class Engine : MonoBehaviour
 
     private bool _changeSpeed;
     [SerializeField]
-    [Range(0,0.1f)]
+    [Range(0, 0.1f)]
     private float _offsetSpeed;
 
     [SerializeField]
@@ -124,20 +124,20 @@ public class Engine : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!start)
-        {
-            return;
-        }
+
 
         state = GamePad.GetState(player);
         _oldFlag = _newFlag;
         _newFlag = (state.Buttons.Y == ButtonState.Pressed);
 
-        _stickLeft.x = Input.GetAxis("Horizontal");
-        _stickLeft.y = Input.GetAxis("Vertical");
+        if (start)
+        {
+            _stickLeft.x = Input.GetAxis("Horizontal");
+            _stickLeft.y = Input.GetAxis("Vertical");
 
-        _stickRight.x = Input.GetAxis("Horizontal2");
-        _stickRight.y = Input.GetAxis("Vertical2");
+            _stickRight.x = Input.GetAxis("Horizontal2");
+            _stickRight.y = Input.GetAxis("Vertical2");
+        }
 
         _stickLeft.distance = Mathf.Sqrt(_stickLeft.x * _stickLeft.x + _stickLeft.y * _stickLeft.y);
         _stickRight.distance = Mathf.Sqrt(_stickRight.x * _stickRight.x + _stickRight.y * _stickRight.y);
@@ -170,7 +170,7 @@ public class Engine : MonoBehaviour
             }
         }
 
-        if(_stickLeft.isSet)
+        if (_stickLeft.isSet)
         {
             float oldAngle = _stickLeft.angle;
             _stickLeft.angle = Mathf.Atan2(_stickLeft.y, _stickLeft.x) * Mathf.Rad2Deg;
@@ -178,7 +178,7 @@ public class Engine : MonoBehaviour
 
             if (_stickLeft.angle > oldAngle)
             {
-                if(_stickRight.distance < _controllerTiledDistance)
+                if (_stickRight.distance < _controllerTiledDistance)
                 {
                     _stickLeft.moveDegree += Mathf.Abs(degree);
                 }
@@ -190,13 +190,13 @@ public class Engine : MonoBehaviour
             }
         }
 
-        if(_stickRight.isSet)
+        if (_stickRight.isSet)
         {
             float oldAngle = _stickRight.angle;
             _stickRight.angle = Mathf.Atan2(_stickRight.y, _stickRight.x) * Mathf.Rad2Deg;
             float degree = Mathf.Abs(_stickRight.angle) - Mathf.Abs(oldAngle);
 
-           if(_stickRight.angle > oldAngle)
+            if (_stickRight.angle > oldAngle)
             {
                 if (_stickLeft.distance < _controllerTiledDistance)
                 {
@@ -230,10 +230,14 @@ public class Engine : MonoBehaviour
         _stickRight.movement = Mathf.Clamp(_stickRight.movement, 0.0f, 360 * 4f);
 
         float bindThrust = (_stickLeft.thrust + _stickRight.thrust) / 360f * 4f;
-        transform.Translate(new Vector3(0, 0, bindThrust * (0.2f + _offsetSpeed) * Time.deltaTime));
+        if (start)
+        {
 
-        transform.localEulerAngles -= new Vector3(0, _stickRight.moveDegree / (1440f / 2f), 0);
-        transform.localEulerAngles += new Vector3(0, _stickLeft.moveDegree / (1440f / 2f), 0);
+            transform.Translate(new Vector3(0, 0, bindThrust * (0.2f + _offsetSpeed) * Time.deltaTime));
+
+            transform.localEulerAngles -= new Vector3(0, _stickRight.moveDegree / (1440f / 2f), 0);
+            transform.localEulerAngles += new Vector3(0, _stickLeft.moveDegree / (1440f / 2f), 0);
+        }
 
         // Rotation for turning
         float turn = (_stickRight.moveDegree - _stickLeft.moveDegree) / 72f;
@@ -260,15 +264,15 @@ public class Engine : MonoBehaviour
         else if (_reached == 1)
         {
             _turnSpeed -= 0.25f;
-            if(_turnSpeed <= 10f)
+            if (_turnSpeed <= 10f)
             {
                 _reached = 0;
             }
         }
-        else if(_reached == 2)
+        else if (_reached == 2)
         {
             _turnSpeed -= 0.25f;
-            _turnSpeed = Mathf.Clamp(_turnSpeed,0,15f);
+            _turnSpeed = Mathf.Clamp(_turnSpeed, 0, 15f);
         }
 
         // Rotation for boosting
@@ -306,13 +310,13 @@ public class Engine : MonoBehaviour
         if (_newFlag && !_oldFlag)
         {
             _vibrateFlag = !_vibrateFlag;
-            if(!_vibrateFlag)
+            if (!_vibrateFlag)
             {
                 GamePad.SetVibration(player, 0, 0);
-            }   
+            }
         }
 
-        if(_vibrateFlag && !isHit)
+        if (_vibrateFlag && !isHit)
         {
             GamePad.SetVibration(player, 0, vibL + vibR);
         }
