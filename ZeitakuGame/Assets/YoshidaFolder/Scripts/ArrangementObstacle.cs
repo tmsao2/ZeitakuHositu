@@ -36,8 +36,10 @@ public class ArrangementObstacle : MonoBehaviour
     [SerializeField]
     int stageWide = 0;
 
-    [SerializeField]
     GameObject stagesParent;
+
+    [SerializeField]
+    DifficultyManager.difficulty diff;
 
     //生成する障害物のセットとそれぞれの生成確率
     [System.Serializable]
@@ -60,8 +62,17 @@ public class ArrangementObstacle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
- 
-        positionFlags = GameObject.Find("StageFlagg").GetComponent<PositionFlags>();
+        string diffName="EasyFlag";
+
+        switch (diff)
+        {
+            case (DifficultyManager.difficulty.easy): diffName = "EasyFlag"; break;
+            case (DifficultyManager.difficulty.normal): diffName = "NormalFlag"; break;
+            case (DifficultyManager.difficulty.hard): diffName = "DifficultFlag"; break;
+        }
+
+        stagesParent = GameObject.Find("Stages");
+        positionFlags = GameObject.Find(diffName).GetComponent<PositionFlags>();
         flags = new List<Transform>();
         flags = positionFlags.GetList();
         flagsCount = 0;
@@ -155,7 +166,7 @@ public class ArrangementObstacle : MonoBehaviour
             rad *= Mathf.Rad2Deg;
             Quaternion qua=new Quaternion();
             qua=Quaternion.Euler(new Vector3(0,rad+90,0));
-            a = Instantiate(a, transform.position, qua);
+            a = Instantiate(a, new Vector3(transform.position.x, transform.position.y, transform.position.z), qua);
             a.transform.parent = stagesParent.transform;
             obstacleInstantiateCount = 0;
         }

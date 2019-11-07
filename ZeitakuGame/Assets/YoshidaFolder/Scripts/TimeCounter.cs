@@ -22,6 +22,7 @@ public class TimeCounter : MonoBehaviour
 
         if (timeRimit <= 0)
         {
+            timeRimit = 0;
             Debug.Log("timeRimit");
         }
         else
@@ -29,5 +30,9 @@ public class TimeCounter : MonoBehaviour
             timeRimit -= Time.deltaTime;
 
         }
+    }
+    public void SetLimit(float limit)
+    {
+        timeRimit = limit;
     }
 }

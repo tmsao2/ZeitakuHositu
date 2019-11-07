@@ -17,6 +17,14 @@ public class GoalTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(playerShip==null)
+        {
+            playerShip = GameObject.Find("boat");
+        }
+        //if(finishUI==null)
+        {
+            //finishUI = Find("GoalCan");
+        }
         time = 0;
         end = false;
     }

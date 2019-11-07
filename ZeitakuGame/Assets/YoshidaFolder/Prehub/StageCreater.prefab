@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7573415904833578092}
   - component: {fileID: 7573415904833578095}
   - component: {fileID: 7573415904833578094}
-  - component: {fileID: 7573415904833578089}
   - component: {fileID: 7573415904833578088}
   m_Layer: 0
   m_Name: StageCreater
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7573415904833578089
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7573415904833578091}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7573415904833578088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,54 +91,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c5c482918d5b694e9763673071c1810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionFlags: {fileID: 7241997126275467213, guid: 314964d06da4cd045b34ef6fc7f9ec3c,
-    type: 3}
+  positionFlags: {fileID: 0}
   flags: []
-  poll: {fileID: 7287678393745320938, guid: 5e35f4b8678e53b49813d3928f338faa, type: 3}
-  ob: {fileID: 2949475766311744675, guid: 340a2bb4c7859f048b3402029f39c777, type: 3}
+  poll: {fileID: 1227412790558199741, guid: 05602e0f5f85050419a2f6d25047eef2, type: 3}
+  smallPoll: {fileID: 7752799203990290160, guid: 3f38cca9560f44946a3e63853f6ad896,
+    type: 3}
+  skeltonWall: {fileID: 4655851354001765038, guid: 6a3eb9c5501ee624bbd2ab1d7ef0d360,
+    type: 3}
+  stageWide: 12
+  stagesParent: {fileID: 0}
   obstacles:
-  - obstacleArray: {fileID: 6142703268891389841, guid: 2e2b8045926703a4389db0d133a424e1,
+  - obstacleArray: {fileID: 6403403040429589720, guid: 6c05d8ae37f9385428ad9d40822c9d23,
       type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 5978388719686564387, guid: f730887dc48958b4e8e93436a2b8cedc,
+    perf: 3
+  - obstacleArray: {fileID: 5023362685734833058, guid: 860b9020fd9af6b4f9dfb541f288282a,
       type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 6192710664509898754, guid: f0873ce0d52e6c241b34da5e7eaf5b42,
+    perf: 3
+  - obstacleArray: {fileID: 4400556609788758750, guid: d5fdbe612b47e5343bd6fae740265f5e,
       type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 2949475766311744675, guid: 340a2bb4c7859f048b3402029f39c777,
+    perf: 3
+  - obstacleArray: {fileID: 8488580460765116379, guid: 79ffd4db59ac54a47912cdeee5751f02,
       type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 5531124700033688540, guid: 830c0e628916fcf4e9a331bfba98d03a,
+    perf: 3
+  - obstacleArray: {fileID: 6152871043449843504, guid: f231c8ef8357ec8409621b884ea23bc2,
       type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 2032107824140095296, guid: 7d5b5916e43cbe145b7582fcde794e45,
+    perf: 3
+  - obstacleArray: {fileID: 8717015007482896541, guid: 3ffc4f21abf2aca448bf5a232f75d514,
       type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 4954721850305381448, guid: c61676a69670e7342bd8148183fe8286,
+    perf: 3
+  - obstacleArray: {fileID: 3545678684247718900, guid: a3dbba9f6bbe8ed429345f716e059ddd,
       type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 724313532845105414, guid: 2965a5a0d4aded6488c7dcbb127aee5f,
+    perf: 3
+  - obstacleArray: {fileID: 6142774220170575139, guid: e0ec7390b32f6204f8e22b7e35ead45f,
       type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 8308895992867970181, guid: 7310f9b3e35fd124ea787660c4a6f963,
+    perf: 3
+  - obstacleArray: {fileID: 7046912616232076812, guid: 54fb2d9e7d9532c49afb502823a613fd,
       type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 2375727745606849797, guid: cd304036c72f04b4bb1f08ab6e4b5b19,
+    perf: 3
+  - obstacleArray: {fileID: 8814326070683550056, guid: 762bddbf071424944ae4d7878c70c655,
       type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 8132140511132052782, guid: 755a3721a71e9fe439accd544b462761,
+    perf: 3
+  - obstacleArray: {fileID: 3851369372165853285, guid: bf6a6026e86c0604b965190c13ef161f,
       type: 3}
-    perf: 50
-  - obstacleArray: {fileID: 13728420236620961, guid: 87333e2823891374180e4b8ad613a016,
+    perf: 3
+  - obstacleArray: {fileID: 2062835223663131162, guid: de14d8f3000acc643ad95a90c155c2f4,
       type: 3}
-    perf: 20
-  - obstacleArray: {fileID: 3871396995263846528, guid: 34f51ed8885cec9499acf2e839e630b8,
-      type: 3}
-    perf: 10
-  - obstacleArray: {fileID: 9221019855676923743, guid: d114a12904bebd14ca16344384c694d6,
-      type: 3}
-    perf: 80
-  - obstacleArray: {fileID: 5557067176439374726, guid: eb3ff7c356ef1a444a97755cf07da93a,
-      type: 3}
-    perf: 50
+    perf: 3
+  obstacleCountMax: 30
