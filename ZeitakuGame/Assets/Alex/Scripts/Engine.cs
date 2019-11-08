@@ -176,7 +176,7 @@ public class Engine : MonoBehaviour
             _stickLeft.angle = Mathf.Atan2(_stickLeft.y, _stickLeft.x) * Mathf.Rad2Deg;
             float degree = Mathf.Abs(_stickLeft.angle) - Mathf.Abs(oldAngle);
 
-            if (_stickLeft.angle > oldAngle)
+            if (_stickLeft.angle > oldAngle && _stickLeft.angle < oldAngle)
             {
                 if (_stickRight.distance < _controllerTiledDistance)
                 {
@@ -196,7 +196,7 @@ public class Engine : MonoBehaviour
             _stickRight.angle = Mathf.Atan2(_stickRight.y, _stickRight.x) * Mathf.Rad2Deg;
             float degree = Mathf.Abs(_stickRight.angle) - Mathf.Abs(oldAngle);
 
-            if (_stickRight.angle > oldAngle)
+            if (_stickRight.angle > oldAngle || _stickRight.angle < oldAngle)
             {
                 if (_stickLeft.distance < _controllerTiledDistance)
                 {

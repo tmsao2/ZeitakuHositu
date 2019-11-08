@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.65521353, g: 0.6804491, b: 0.7171979, a: 1}
+  m_IndirectSpecularColor: {r: 0.6553169, g: 0.6804567, b: 0.71713805, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -466,6 +466,26 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50506879, guid: 0cfc87dffab91bf4cbdaa0e37e383ae6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3381bc45d4a5cfb489d47d07ec145734, type: 2}
+    - target: {fileID: 1964768566, guid: 0cfc87dffab91bf4cbdaa0e37e383ae6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3381bc45d4a5cfb489d47d07ec145734, type: 2}
+    - target: {fileID: 209025204, guid: 0cfc87dffab91bf4cbdaa0e37e383ae6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2ad8f4c605d89b5468439dfcfd34e9d7, type: 2}
+    - target: {fileID: 1701014416, guid: 0cfc87dffab91bf4cbdaa0e37e383ae6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff5eb503251d7f547bf2d140e0fbf006, type: 2}
+    - target: {fileID: 1823969857, guid: 0cfc87dffab91bf4cbdaa0e37e383ae6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 902de2e8842edaf48ba98e830a110770, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cfc87dffab91bf4cbdaa0e37e383ae6, type: 3}
 --- !u!114 &110456657 stripped
@@ -606,7 +626,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1965481947}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &177564957
 Rigidbody:
@@ -788,7 +808,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1965481947}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &317779860
 Rigidbody:
@@ -3790,8 +3810,8 @@ Transform:
   m_Children:
   - {fileID: 1989020439}
   - {fileID: 901985409}
-  - {fileID: 177564956}
   - {fileID: 317779859}
+  - {fileID: 177564956}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
