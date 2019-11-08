@@ -22,6 +22,11 @@ public class DifficultyManager : MonoBehaviour
     [SerializeField]
     TimeCounter timeCounter;
 
+    [SerializeField]
+    GameObject guide;
+    [SerializeField]
+    GameObject guideGyaku;
+
     public void SetDifficulty(int difint)
     {
         timeCounter = GameObject.Find("TimeManager").GetComponent<TimeCounter>();
@@ -30,9 +35,9 @@ public class DifficultyManager : MonoBehaviour
         int timeRimit = 0;
         switch (diff)
         {
-            case (difficulty.easy): stageCreater = easyStage; timeRimit = 120; ; break;
-            case (difficulty.normal): stageCreater = normalStage; timeRimit = 180; break;
-            case (difficulty.hard): stageCreater = difficultStage; timeRimit = 240; break;
+            case (difficulty.easy): stageCreater = easyStage; timeRimit = 120; guide.SetActive(true);guideGyaku.SetActive(true); ; break;
+            case (difficulty.normal): stageCreater = normalStage; timeRimit = 180; guide.SetActive(false); guideGyaku.SetActive(false); break;
+            case (difficulty.hard): stageCreater = difficultStage; timeRimit = 240; guide.SetActive(false); guideGyaku.SetActive(false); break;
         }
         timeCounter.SetLimit(timeRimit);
         TimeCounter.timeRimitMax = timeRimit;
