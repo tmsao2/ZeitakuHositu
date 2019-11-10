@@ -42,6 +42,8 @@ public class Engine : MonoBehaviour
 
     public bool start;
 
+
+
     private struct Stick
     {
         // Bool For Init
@@ -176,7 +178,7 @@ public class Engine : MonoBehaviour
             _stickLeft.angle = Mathf.Atan2(_stickLeft.y, _stickLeft.x) * Mathf.Rad2Deg;
             float degree = Mathf.Abs(_stickLeft.angle) - Mathf.Abs(oldAngle);
 
-            if (_stickLeft.angle > oldAngle)
+            if (_stickLeft.angle > oldAngle || _stickLeft.angle < oldAngle)
             {
                 if (_stickRight.distance < _controllerTiledDistance)
                 {
@@ -196,7 +198,7 @@ public class Engine : MonoBehaviour
             _stickRight.angle = Mathf.Atan2(_stickRight.y, _stickRight.x) * Mathf.Rad2Deg;
             float degree = Mathf.Abs(_stickRight.angle) - Mathf.Abs(oldAngle);
 
-            if (_stickRight.angle > oldAngle)
+            if (_stickRight.angle > oldAngle || _stickRight.angle < oldAngle)
             {
                 if (_stickLeft.distance < _controllerTiledDistance)
                 {
@@ -232,7 +234,6 @@ public class Engine : MonoBehaviour
         float bindThrust = (_stickLeft.thrust + _stickRight.thrust) / 360f * 4f;
         if (start)
         {
-
             transform.Translate(new Vector3(0, 0, bindThrust * (0.2f + _offsetSpeed) * Time.deltaTime));
 
             transform.localEulerAngles -= new Vector3(0, _stickRight.moveDegree / (1440f / 2f), 0);
