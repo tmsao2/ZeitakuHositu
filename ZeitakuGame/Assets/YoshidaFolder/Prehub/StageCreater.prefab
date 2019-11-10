@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7573415904833578091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7573415904833578092}
+  - component: {fileID: 7573415904833578095}
+  - component: {fileID: 7573415904833578094}
+  - component: {fileID: 7573415904833578088}
+  m_Layer: 0
+  m_Name: StageCreater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7573415904833578092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573415904833578091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7573415904833578095
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573415904833578091}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &7573415904833578094
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573415904833578091}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &7573415904833578088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573415904833578091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5c482918d5b694e9763673071c1810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionFlags: {fileID: 0}
+  flags: []
+  poll: {fileID: 1227412790558199741, guid: 05602e0f5f85050419a2f6d25047eef2, type: 3}
+  smallPoll: {fileID: 7752799203990290160, guid: 3f38cca9560f44946a3e63853f6ad896,
+    type: 3}
+  skeltonWall: {fileID: 4655851354001765038, guid: 6a3eb9c5501ee624bbd2ab1d7ef0d360,
+    type: 3}
+  stageWide: 12
+  stagesParent: {fileID: 0}
+  obstacles:
+  - obstacleArray: {fileID: 6403403040429589720, guid: 6c05d8ae37f9385428ad9d40822c9d23,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 5023362685734833058, guid: 860b9020fd9af6b4f9dfb541f288282a,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 4400556609788758750, guid: d5fdbe612b47e5343bd6fae740265f5e,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 8488580460765116379, guid: 79ffd4db59ac54a47912cdeee5751f02,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 6152871043449843504, guid: f231c8ef8357ec8409621b884ea23bc2,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 8717015007482896541, guid: 3ffc4f21abf2aca448bf5a232f75d514,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 3545678684247718900, guid: a3dbba9f6bbe8ed429345f716e059ddd,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 6142774220170575139, guid: e0ec7390b32f6204f8e22b7e35ead45f,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 7046912616232076812, guid: 54fb2d9e7d9532c49afb502823a613fd,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 8814326070683550056, guid: 762bddbf071424944ae4d7878c70c655,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 3851369372165853285, guid: bf6a6026e86c0604b965190c13ef161f,
+      type: 3}
+    perf: 3
+  - obstacleArray: {fileID: 2062835223663131162, guid: de14d8f3000acc643ad95a90c155c2f4,
+      type: 3}
+    perf: 3
+  obstacleCountMax: 30
